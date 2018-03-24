@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/jackson-annotations-2.9.0.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/jackson-core-2.9.4.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/jackson-databind-2.9.4.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/jackson-dataformat-yaml-2.9.4.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/log4j-api-2.10.0.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/log4j-core-2.10.0.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/projet-in404-2018.jar"/>
+	<classpathentry kind="lib" path="build/distributions/projet-in404-2018/lib/snakeyaml-1.18.jar"/>
+	<classpathentry kind="lib" path="build/libs/projet-in404-2018.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="build/classes/java/main"/>
+</classpath>

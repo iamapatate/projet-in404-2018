@@ -1,0 +1,15 @@
+Configuration:
+  status: warn
+
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_ERR
+      PatternLayout:
+        Pattern: "%d %p %C{1.} [%t] %msg%n"
+
+  Loggers:
+    Root:
+      level: trace
+      AppenderRef:
+        ref: Console

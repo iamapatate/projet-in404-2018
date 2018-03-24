@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="1" skipped="0" failures="0" errors="0" time="0.84" hostname="DESKTOP-CFFK3DE" timestamp="2018-03-19T12:24:38">
+<properties>
+<property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+<property name="file.encoding" value="windows-1252"/>
+<property name="file.encoding.pkg" value="sun.io"/>
+<property name="file.separator" value="\"/>
+<property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+<property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+<property name="java.class.path" value="C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\classes\java\test;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\resources\test;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\classes\java\main;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\resources\main;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.10.0\c90b597163cd28ab6d9687edd53db601b6ea75a1\log4j-core-2.10.0.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.10.0\fec5797a55b786184a537abd39c3fa1449d752d6\log4j-api-2.10.0.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.9.4\498bbc3b94f566982c7f7c6d4d303fce365529be\jackson-databind-2.9.4.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.dataformat\jackson-dataformat-yaml\2.9.4\3edaa0c22529b6c1c095f6e3cafc6d54e8709538\jackson-dataformat-yaml-2.9.4.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-engine\5.0.3\52fcc461185c48178608f687e962de6484dfb69e\junit-jupiter-engine-5.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-params\5.0.3\2040154af126813745d61af0496f579ff688d20e\junit-jupiter-params-5.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-api\5.0.3\43872be66bab0172073ac698062419755e563353\junit-jupiter-api-5.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-all\1.3\63a21ebc981131004ad02e0434e799fd7f3a8d5a\hamcrest-all-1.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.9.0\7c10d545325e3a6e72e06381afe469fd40eb701\jackson-annotations-2.9.0.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.9.4\a9a71ec1aa37da47db168fede9a4a5fb5e374320\jackson-core-2.9.4.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.yaml\snakeyaml\1.18\e4a441249ade301985cb8d009d4e4a72b85bf68e\snakeyaml-1.18.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.0.3\7028a17adabd876b6d7530e43523a7f4fd109e18\junit-platform-engine-1.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.0.3\3663f3ddfe47df2a7bf363d5c0196f0c7a09820f\junit-platform-commons-1.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.0.0\3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d\apiguardian-api-1.0.0.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.0.0\6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4\opentest4j-1.0.0.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-console\1.0.3\39e2d8697f3244a16f9fafd58ad871918cb5a722\junit-platform-console-1.0.3.jar;C:\Users\eilem\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.0.3\91d799c70c3a597631883b77117046e09d6a4419\junit-platform-launcher-1.0.3.jar"/>
+<property name="java.class.version" value="52.0"/>
+<property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_161\jre\lib\endorsed"/>
+<property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_161\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+<property name="java.home" value="C:\Program Files\Java\jdk1.8.0_161\jre"/>
+<property name="java.io.tmpdir" value="C:\Users\eilem\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\eilem\AppData\Local\Microsoft\WindowsApps;;."/>
+<property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+<property name="java.runtime.version" value="1.8.0_161-b12"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="1.8"/>
+<property name="java.vendor" value="Oracle Corporation"/>
+<property name="java.vendor.url" value="http://java.oracle.com/"/>
+<property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+<property name="java.version" value="1.8.0_161"/>
+<property name="java.vm.info" value="mixed mode"/>
+<property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="1.8"/>
+<property name="java.vm.vendor" value="Oracle Corporation"/>
+<property name="java.vm.version" value="25.161-b12"/>
+<property name="line.separator" value="
+"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Windows 10"/>
+<property name="os.version" value="10.0"/>
+<property name="path.separator" value=";"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_161\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_161\jre\classes"/>
+<property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_161\jre\bin"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.cpu.isalist" value="amd64"/>
+<property name="sun.desktop" value="windows"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\classes\java\main;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\resources\main;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\classes\java\test;C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\resources\test -n ^.*Tests?$ --reports-dir C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018\build\test-results\junit-platform"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="Cp1252"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="sun.os.patch.level" value=""/>
+<property name="user.country" value="FR"/>
+<property name="user.dir" value="C:\Users\eilem\Documents\Documents\Fac 2017-2018\Conception et programmation OO\projet-in404-2018"/>
+<property name="user.home" value="C:\Users\eilem"/>
+<property name="user.language" value="fr"/>
+<property name="user.name" value="eilem"/>
+<property name="user.script" value=""/>
+<property name="user.timezone" value="Europe/Paris"/>
+<property name="user.variant" value=""/>
+</properties>
+<testcase name="testGreetings()" classname="fr.uvsq.poo.monprojet.ApplicationTest" time="0.804">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:fr.uvsq.poo.monprojet.ApplicationTest]/[method:testGreetings()]
+display-name: testGreetings()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>
