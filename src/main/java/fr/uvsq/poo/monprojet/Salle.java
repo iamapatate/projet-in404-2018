@@ -1,6 +1,7 @@
+package fr.uvsq.poo.monprojet;
 
 public class Salle {
-	String grille[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
+	String grillemin[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
 	boolean Porte_N;
 	boolean Porte_E;
 	boolean Porte_S;
@@ -10,22 +11,18 @@ public class Salle {
 	
 	
 	
-	public Salle Init_salle() {
-		Salle S = new Salle();
-		
-		for(int i = 0; i < Variables.largeur_salle; i++) {
-			for(int j = 0; j < Variables.hauteur_salle; j++) {
-				S.grille[i][j] = null;
+	public Salle(int largeur, int hauteur) {		
+		for(int i = 0; i < largeur; i++) {
+			for(int j = 0; j < hauteur; j++) {
+				this.grillemin[i][j] = new String();
 			}
 		}
 		
-		S.Porte_N = true;
-		S.Porte_E = true;
-		S.Porte_S = true;
-		S.Porte_W = true;
-		S.Nb_portes = 4;
-		S.Type = -1;
-		
-		return S;
+		this.Porte_N = true;
+		this.Porte_E = true;
+		this.Porte_S = true;
+		this.Porte_W = true;
+		this.Nb_portes = 4;
+		this.Type = -1;
 	}
 }

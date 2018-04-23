@@ -1,3 +1,4 @@
+package fr.uvsq.poo.monprojet;
 
 public class Variables {
 	public static int largeur_salle = 13;

@@ -7,18 +7,19 @@ public class Etage {
 	String grillestring[][];
 	
 	public Etage() {
-		Salle grille[][] = new Salle[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
-		String grillestring[][] = new String[Variables.Nb_largeur_salles * Variables.largeur_salle][Variables.Nb_hauteur_salles * Variables.hauteur_salle];
+		for(int i = 0; i < Variables.Nb_largeur_salles;i++) {
+			for(int j = 0; j < Variables.Nb_hauteur_salles; j++) {
+				try {
+					this.grille[i][j] = new Salle(Variables.largeur_salle, Variables.hauteur_salle);
+				}
+				catch(Exception e) {System.out.println("probleme init salle de grille étage");}
+			}
+		}
+		this.grillestring = new String[Variables.Nb_largeur_salles * Variables.largeur_salle][Variables.Nb_hauteur_salles * Variables.hauteur_salle];
 	}
 	
 	
 	public Etage Init_etage() {
-		/* On initialise toutes les salles */
-		for(int i = 0; i < Variables.Nb_largeur_salles; i++) {
-			for(int j = 0; j < Variables.Nb_hauteur_salles; j++) {
-				this.grille[i][j] = this.grille[i][j].Init_salle();
-			}
-		}
 		
 		/* On met à "false" toutes les portes qui donnent vers l'extérieur de la grille (on ne veut pas de porte qui donne vers le néant) */
 		for(int i = 0; i < Variables.Nb_largeur_salles; i++) {
@@ -34,7 +35,7 @@ public class Etage {
 			this.grille[Variables.Nb_hauteur_salles-1][j].Nb_portes -= 1;
 		}
 		
-		/* On créé des murs au hasard */
+		/* On crée des murs au hasard */
 		for(int i = 0; i < Variables.Nb_largeur_salles; i++) {
 			for(int j = 0; j < Variables.Nb_hauteur_salles; j++) {
 				for(int k = 0; (k < 4) && (this.grille[i][j].Nb_portes > 1); k++) {
@@ -107,25 +108,25 @@ public class Etage {
 				for(int x = 0; x < Variables.largeur_salle; x++) {
 					for(int y = 0; y < Variables.hauteur_salle; y++) {
 						if(x == 0 || x == Variables.largeur_salle-1 || y == 0 || y == Variables.hauteur_salle-1) {
-							this.grille[i][j].grille[x][y] = "mur";
+							this.grille[i][j].grillemin[x][y] = "mur";
 						}
 						else {
-							this.grille[i][j].grille[x][y] = "sol";
+							this.grille[i][j].grillemin[x][y] = "sol";
 						}
 					}
 				}
 				/* Ici on enlève les murs où il y a une porte et les remplace par du sol */
 				if(this.grille[i][j].Porte_N == true) {
-					this.grille[i][j].grille[(Variables.largeur_salle-1)/2][Variables.hauteur_salle-1] = "sol";
+					this.grille[i][j].grillemin[(Variables.largeur_salle-1)/2][Variables.hauteur_salle-1] = "sol";
 				}
 				if(this.grille[i][j].Porte_E == true) {
-					this.grille[i][j].grille[Variables.largeur_salle-1][(Variables.hauteur_salle-1)/2] = "sol";
+					this.grille[i][j].grillemin[Variables.largeur_salle-1][(Variables.hauteur_salle-1)/2] = "sol";
 				}
 				if(this.grille[i][j].Porte_S == true) {
-					this.grille[i][j].grille[(Variables.largeur_salle-1)/2][0] = "sol";
+					this.grille[i][j].grillemin[(Variables.largeur_salle-1)/2][0] = "sol";
 				}
 				if(this.grille[i][j].Porte_W == true) {
-					this.grille[i][j].grille[0][(Variables.hauteur_salle-1)/2] = "sol";
+					this.grille[i][j].grillemin[0][(Variables.hauteur_salle-1)/2] = "sol";
 				}
 			}
 		}
@@ -138,7 +139,7 @@ public class Etage {
 					for(int y = 0; y < Variables.hauteur_salle; y++) {
 						double proba = Math.random();
 						if(nb_PNJ > 0 && proba < 0.10) {
-							this.grille[i][j].grille[x][y] = "PNJ";
+							this.grille[i][j].grillemin[x][y] = "PNJ";
 							nb_PNJ -= 0.20;
 						}
 					}
@@ -156,7 +157,7 @@ public class Etage {
 			for(int j = 0; j < Variables.Nb_hauteur_salles; j++) {
 				for(int x = 0; x < Variables.largeur_salle; x++) {
 					for(int y = 0; y < Variables.hauteur_salle; y++) {
-						matrice[i*x][j*y] = this.grille[i][j].grille[x][y];
+						matrice[i*x][j*y] = this.grille[i][j].grillemin[x][y];
 					}
 				}
 			}
