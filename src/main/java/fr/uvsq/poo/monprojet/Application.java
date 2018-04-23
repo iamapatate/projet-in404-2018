@@ -37,10 +37,15 @@ public enum Application {
 
     	System.out.println("debut");
     	
-        Etage e = new Etage();
-        e.Init_etage();
-        e.aff_etage();
-
+       // Etage e = new Etage();
+       // e.Init_etage();
+       // e.aff_etage();
+    	
+    	Joueur J = new Joueur("PJ");
+    	UneSalleTemporaire temp = new UneSalleTemporaire();
+    	temp.initSalleTemp(J);
+    	System.out.println(temp.WhatsInFrontOfPlayer(J));
+    	temp.affSalleTemp();
     }
 
 
