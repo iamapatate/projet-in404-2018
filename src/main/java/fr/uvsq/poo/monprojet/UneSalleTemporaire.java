@@ -1,7 +1,10 @@
 package fr.uvsq.poo.monprojet;
+import java.util.*;
 
 public class UneSalleTemporaire {
 	String grillemin[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
+	ArrayList<Objet> objetsdelamap = new ArrayList<Objet>();
+	
 	boolean Porte_N;
 	boolean Porte_E;
 	boolean Porte_S;
@@ -27,8 +30,7 @@ public class UneSalleTemporaire {
 	 * (seront affichés: murs = #, sol = . , portes = P, joueur = +)
 	 * 
 	 */
-	public UneSalleTemporaire initSalleTemp() {
-		Joueur J = new Joueur("PJ");
+	public UneSalleTemporaire initSalleTemp(Joueur J) {
 		
 		for(int i = 0; i < Variables.largeur_salle; i++) {
 			for(int j = 0; j < Variables.hauteur_salle; j++) {
@@ -66,8 +68,7 @@ public class UneSalleTemporaire {
 	
 	/*
 	 *	Affiche la salle courante 
-	 */
-	
+	 */	
 	public void affSalleTemp() {
 		for(int j = 0; j < Variables.hauteur_salle; j++) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
@@ -78,5 +79,37 @@ public class UneSalleTemporaire {
 			}
 			System.out.println("");
 		}
+	}
+	
+	/*
+	 *  Renvoie un String symbolisant ce qui se trouve à la case i,j
+	 */
+	public String getString(int i, int j) {
+		return this.grillemin[i][j];
+	}
+	
+	/*
+	 *  Renvoie un String symbolisant ce qui se trouve en face du joueur j
+	 *  si sa position le permet (limites de la matrice)
+	 */
+	public String WhatsInFrontOfPlayer(Joueur J) {
+		String dirplayer = J.getDir();
+		if(dirplayer == "bas") {
+			if(J.getPosY() < Variables.hauteur_salle - 1)
+			return getString(J.getPosX(), J.getPosY()+1);
+		}
+		else if(dirplayer == "haut") {
+			if(J.getPosY() > 0)
+			return getString(J.getPosX(), J.getPosY()-1);
+		}
+		else if(dirplayer == "gauche") {
+			if(J.getPosX() > 0)
+			return getString(J.getPosX()-1, J.getPosY());
+		}
+		else if(dirplayer == "droite") {
+			if(J.getPosX() < Variables.largeur_salle - 1)
+			return getString(J.getPosX()+1, J.getPosY());
+		}
+		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}
 }
