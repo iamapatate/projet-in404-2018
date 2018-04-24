@@ -25,4 +25,21 @@ public class Salle {
 		this.Nb_portes = 4;
 		this.Type = -1;
 	}
+	
+	public void aff_salle(){
+		for(int i=0;i<Variables.largeur_salle;i++){
+			for(int j=0;i<Variables.hauteur_salle;j++){
+				if(this.grillemin[i][j] == "sol") {
+					System.out.print(" ");
+				}
+				if(this.grillemin[i][j] == "mur") {
+					System.out.print("#");
+				}
+				if(this.grillemin[i][j] == "PNJ") {
+					System.out.print("+");
+				}
+			}
+			System.out.print("\n");
+		}
+	}
 }
