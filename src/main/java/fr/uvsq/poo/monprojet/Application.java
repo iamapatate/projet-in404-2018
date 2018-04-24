@@ -1,5 +1,4 @@
 package fr.uvsq.poo.monprojet;
-
 /**
 
  * Cette classe est le programme principal du projet.
@@ -36,16 +35,19 @@ public enum Application {
     public void run(String[] args) {
 
     	System.out.println("debut");
-    	
        // Etage e = new Etage();
        // e.Init_etage();
        // e.aff_etage();
-    	
+    	Commande com = new Commande();
     	Joueur J = new Joueur("PJ");
     	UneSalleTemporaire temp = new UneSalleTemporaire();
     	temp.initSalleTemp(J);
-    	System.out.println(temp.WhatsInFrontOfPlayer(J));
-    	temp.affSalleTemp();
+    	temp.affSalleTemp(J);
+    	for(int i = 0; i < 5; i++) {
+    		com.analyseCommandeJoueur(J,temp);
+    		temp = temp.Update(J);
+    		temp.affSalleTemp(J);
+    	}
     }
 
 

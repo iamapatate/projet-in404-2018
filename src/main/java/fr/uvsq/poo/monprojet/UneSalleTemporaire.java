@@ -69,7 +69,7 @@ public class UneSalleTemporaire {
 	/*
 	 *	Affiche la salle courante 
 	 */	
-	public void affSalleTemp() {
+	public void affSalleTemp(Joueur J) {
 		for(int j = 0; j < Variables.hauteur_salle; j++) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
 				if(this.grillemin[i][j] == "mur") System.out.print("#");
@@ -79,6 +79,16 @@ public class UneSalleTemporaire {
 			}
 			System.out.println("");
 		}
+	}
+	
+	public UneSalleTemporaire Update(Joueur J) {
+		for(int j = 0; j< Variables.hauteur_salle; j++) {
+			for(int i = 0; i < Variables.largeur_salle; i++) {
+				if(this.grillemin[i][j].equals("PJ")) this.grillemin[i][j] = "sol";
+			}
+		}
+		this.grillemin[J.getPosX()][J.getPosY()] = "PJ";
+		return this;
 	}
 	
 	/*
@@ -94,21 +104,21 @@ public class UneSalleTemporaire {
 	 */
 	public String WhatsInFrontOfPlayer(Joueur J) {
 		String dirplayer = J.getDir();
-		if(dirplayer == "bas") {
-			if(J.getPosY() < Variables.hauteur_salle - 1)
-			return getString(J.getPosX(), J.getPosY()+1);
-		}
-		else if(dirplayer == "haut") {
+		if(dirplayer.equals("up")) {
 			if(J.getPosY() > 0)
-			return getString(J.getPosX(), J.getPosY()-1);
+			return getString(J.getPosX(), J.getPosY() - 1);
 		}
-		else if(dirplayer == "gauche") {
+		else if(dirplayer.equals("down")) {
+			if(J.getPosY() < Variables.hauteur_salle - 1)
+			return getString(J.getPosX(), J.getPosY() + 1);
+		}
+		else if(dirplayer.equals("left")) {
 			if(J.getPosX() > 0)
-			return getString(J.getPosX()-1, J.getPosY());
+			return getString(J.getPosX() - 1, J.getPosY());
 		}
-		else if(dirplayer == "droite") {
+		else if(dirplayer.equals("right")) {
 			if(J.getPosX() < Variables.largeur_salle - 1)
-			return getString(J.getPosX()+1, J.getPosY());
+			return getString(J.getPosX() + 1, J.getPosY());
 		}
 		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}

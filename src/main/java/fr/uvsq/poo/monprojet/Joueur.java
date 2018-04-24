@@ -20,14 +20,14 @@ public class Joueur {
 	public Joueur(String type) {
 		x = (int) (Math.random() * (Variables.largeur_salle - 1)) + 1;
 		y = (int) (Math.random() * (Variables.hauteur_salle - 1)) + 1;
-		dir = "haut";
+		dir = "up";
 		this.type = type;
 		this.puissance = 30;
 		if(this.type == "PJ") {
 			this.vie = 3;
 			this.inventaire = new ArrayList<Objet>();
 		}
-		else this.vie = 0;		
+		else this.vie = 1;		
 	}
 	
 	public int getPosX() {
@@ -42,12 +42,21 @@ public class Joueur {
 		return this.dir;
 	}
 	
+	/*
+	 *  Commandes en anglais
+	 */
 	public Joueur Move(String dir) {
-		if(dir == "bas" && this.getPosY() < Variables.hauteur_salle) this.x += 1;
-		else if(dir == "haut" && this.getPosY() > 0) this.x -= 1;
-		else if(dir == "gauche" && this.getPosX() > 0) this.y -= 1;
-		else if(dir == "droite" && this.getPosX() < Variables.largeur_salle) this.y += 1;
-		else System.out.println("erreur de direction");		
+		System.out.println(this.getPosX() + " " + this.getPosY());
+		if(dir.equals("down") && this.getPosY() < Variables.hauteur_salle - 1) this.y += 1;
+		else if(dir.equals("up") && this.getPosY() > 0) this.y -= 1;
+		else if(dir.equals("left") && this.getPosX() > 0) this.x -= 1;
+		else if(dir.equals("right") && this.getPosX() < Variables.largeur_salle - 1) this.x += 1;
+		else System.out.println("Erreur de direction");		
+		this.dir = dir;
+		return this;
+	}
+	
+	public Joueur Turn(String dir) {
 		this.dir = dir;
 		return this;
 	}
