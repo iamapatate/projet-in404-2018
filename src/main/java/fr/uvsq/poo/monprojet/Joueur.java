@@ -16,7 +16,6 @@ public class Joueur extends DansLaMap{
 	public Joueur(Salle S) {
 		super(S);
 		dir = "up";
-		inventaire = new ArrayList<Objet>();
 	}
 		
 	public String getDir() {
