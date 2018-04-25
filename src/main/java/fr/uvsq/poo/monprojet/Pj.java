@@ -3,7 +3,6 @@ package fr.uvsq.poo.monprojet;
 import java.util.ArrayList;
 
 public class Pj extends Joueur {
-	int vie;
 	ArrayList<Objet> inventaire;
 	
 	
