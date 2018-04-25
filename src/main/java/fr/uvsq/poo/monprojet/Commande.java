@@ -20,27 +20,27 @@ public class Commande {
 		return split;
 	}
 	
-	public Joueur analyseCommandeJoueur(Joueur J, UneSalleTemporaire S) {
+	public void analyseCommandeJoueur(Salle S) {
 		String[] action;
 		action = getAction();
 		String ac;
 		if(action[0].equals("move")) {
-			return J.Move(action[1]);
+			S.joueur.Move(action[1]);
 		}
 		else if(action[0].equals("turn")) {
-			return J.Turn(action[1]);
+			S.joueur.Turn(action[1]);
 		}
-		else if(action[0].equals("pick")) {
-			ac = S.WhatsInFrontOfPlayer(J);
+		else if(action[0].equals("see")) {
+			ac = S.WhatsInFrontOfPlayer(S.joueur);
 			System.out.println(ac);
 		}
 		else if(action[0].equals("open")) {
-			ac = S.WhatsInFrontOfPlayer(J);
+			ac = S.WhatsInFrontOfPlayer(S.joueur);
 			if(ac.equals("porte")) {
 				System.out.println("Porte ouverte, salle suivante");
 			}
 		}
 		else System.out.println("erreur de commande");
-		return J;
+		S.Update();
 	}
 }

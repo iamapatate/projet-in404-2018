@@ -5,15 +5,15 @@ package fr.uvsq.poo.monprojet;
 
  *
 
- * Elle est une implÃ©mentation du <em>design pattern</em>
+ * Elle est une implémentation du <em>design pattern</em>
 
  * <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">Singleton</a>.
 
  *
 
- * @author StÃ©phane Lopes
+ * @author Stéphane Lopes
 
- * @version fÃ©v. 2018
+ * @version fév. 2018
 
  */
 
@@ -24,11 +24,11 @@ public enum Application {
 
     /**
 
-     * Cette mÃ©thode est destinÃ©e Ã  initialiser et lancer l'exÃ©cution du programme.
+     * Cette méthode est destinée à initialiser et lancer l'exécution du programme.
 
      *
 
-     * @param args les paramÃ¨tres de la ligne de commande du shell
+     * @param args les paramètres de la ligne de commande du shell
 
      */
 
@@ -39,14 +39,12 @@ public enum Application {
        // e.Init_etage();
        // e.aff_etage();
     	Commande com = new Commande();
-    	Joueur J = new Pj();
-    	UneSalleTemporaire temp = new UneSalleTemporaire();
-    	temp.initSalleTemp(J);
-    	temp.affSalleTemp(J);
+    	Salle temp = new Salle();
+    	temp = temp.initSalleTemp();
+    	temp.affSalleTemp();
     	for(int i = 0; i < 5; i++) {
-    		com.analyseCommandeJoueur(J,temp);
-    		temp = temp.Update(J);
-    		temp.affSalleTemp(J);
+    		com.analyseCommandeJoueur(temp);
+    		temp.affSalleTemp();
     	}
     }
 
@@ -54,11 +52,11 @@ public enum Application {
 
     /**
 
-     * La mÃ©thode de classe <em>main</em> se contente de dÃ©lÃ©guer le lancement du programme Ã  la mÃ©thode <em>run</em>.
+     * La méthode de classe <em>main</em> se contente de déléguer le lancement du programme à la méthode <em>run</em>.
 
      *
 
-     * @param args les paramÃ¨tres de la ligne de commande du shell
+     * @param args les paramètres de la ligne de commande du shell
 
      */
 
