@@ -43,5 +43,10 @@ public class Joueur {
 		return this;
 	}
 	
+	public Joueur Turn(String dir) {
+-		this.dir = dir;
+-		return this;
+-	}
+	
 	
 }
