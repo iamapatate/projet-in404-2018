@@ -18,7 +18,7 @@ public class Joueur {
 		x = (int) (Math.random() * (Variables.largeur_salle - 1)) + 1;
 		y = (int) (Math.random() * (Variables.hauteur_salle - 1)) + 1;
 		dir = "haut";
-		this.puissance = 0;
+		this.puissance = 30;
 	}
 	
 	public int getPosX() {
