@@ -39,7 +39,7 @@ public enum Application {
        // e.Init_etage();
        // e.aff_etage();
     	Commande com = new Commande();
-    	Joueur J = new Pj;
+    	Joueur J = new Pj();
     	UneSalleTemporaire temp = new UneSalleTemporaire();
     	temp.initSalleTemp(J);
     	temp.affSalleTemp(J);
