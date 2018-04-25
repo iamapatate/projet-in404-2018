@@ -12,8 +12,7 @@ public class Pj extends Joueur {
 		super(S);
 		this.puissance = 30;
 		this.vie = 3;
-		this.inventaire = new ArrayList<Objet>();
-		this.vie = 0;		
+		this.inventaire = new ArrayList<Objet>();	
 	}
 	
 	public Joueur Turn(String dir) {
