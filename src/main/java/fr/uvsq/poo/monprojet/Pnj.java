@@ -5,7 +5,7 @@ public class Pnj extends Joueur {
 
 	public Pnj() {
 		super();
-		this.vie=1
+		this.vie=1;
 	}
 	
 	public Joueur Move(String dir) {
