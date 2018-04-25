@@ -11,15 +11,18 @@ public class Pj extends Joueur {
 		super();
 		this.puissance = 30;
 		this.vie = 3;
-		this.inventaire = new ArrayList<Objet>();
-		
-		this.vie = 0;		
+		this.inventaire = new ArrayList<Objet>();		
 	}
 	
 	public Joueur Move(String dir) {
 		super.Move(dir);
 		return this;
 	}
+	
+	public Joueur Turn(String dir) {
+-		super.Turn(dir);
+-		return this;
+-	}
 	
 	public ArrayList<Objet> PickUp(Objet Obj){
 		 this.inventaire.add(Obj);
