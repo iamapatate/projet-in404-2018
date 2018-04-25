@@ -6,6 +6,7 @@ public class Joueur {
 	int x,y;
 	String dir;
 	int puissance;
+	int vie;
 	
 	/* 	
 	 *	cr�er un joueur de type PNJ ou PJ en fonction de l'argument
