@@ -6,8 +6,6 @@ public enum Obj {
 	lime (5),
 	surin (10),
 	revolver (20);
-	
-	//Objets directement construits
 
 	  private int correspondance;
 
