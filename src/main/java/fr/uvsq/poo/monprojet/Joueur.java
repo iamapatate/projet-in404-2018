@@ -5,11 +5,10 @@ import java.util.*;
 public class Joueur extends DansLaMap{
 	String dir;
 	int puissance;
-	ArrayList<Objet> inventaire;
 	
 	/* 	
-	 *	créer un joueur de type PNJ ou PJ en fonction de l'argument
-	 *	positionné aléatoirement dans une matrice salle
+	 *	crÃ©er un joueur de type PNJ ou PJ en fonction de l'argument
+	 *	positionnÃ© alÃ©atoirement dans une matrice salle
 	 *	vie de base = 3, puissance de base = 30, si PNJ pas de vie
 	 *
 	 */
