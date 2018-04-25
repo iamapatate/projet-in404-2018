@@ -5,6 +5,7 @@ public class Pnj extends Joueur {
 
 	public Pnj() {
 		super();
+		this.vie=1
 	}
 	
 	public Joueur Move(String dir) {
@@ -12,5 +13,9 @@ public class Pnj extends Joueur {
 		return this;
 		
 	}
+	public Joueur Turn(String dir) {
+-		super.Turn(dir);
+-		return this;
+-	}
 
 }
