@@ -2,8 +2,8 @@ package fr.uvsq.poo.monprojet;
 import java.util.*;
 
 public class Commande {
-	Scanner sc;
-	String action;
+	protected Scanner sc;
+	protected String action;
 	
 	public Commande() {
 		this.sc = new Scanner(System.in);

@@ -1,18 +1,9 @@
 package fr.uvsq.poo.monprojet;
-import java.util.*;
 
-
-public class Joueur extends DansLaMap{
-	String dir;
-	int puissance;
-	
-	/* 	
-	 *	créer un joueur de type PNJ ou PJ en fonction de l'argument
-	 *	positionné aléatoirement dans une matrice salle
-	 *	vie de base = 3, puissance de base = 30, si PNJ pas de vie
-	 *
-	 */
-	
+public abstract class Joueur extends DansLaMap{
+	protected String dir;
+	protected int puissance;
+		
 	public Joueur(Salle S) {
 		super(S);
 		dir = "up";
