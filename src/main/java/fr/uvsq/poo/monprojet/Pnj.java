@@ -7,19 +7,20 @@ public class Pnj extends Joueur {
 		this.type = "PNJ";
 	}
 	
-	public Pnj MoveAleat() {
-		int a = (int) Math.random();
-		if(a <= 0.25) {
-			this.Move("up");
+	public Pnj MoveAleat(Salle S) {
+		int a = (int) (Math.random() * 101);
+		System.out.println(a);
+		if(a <= 25) {
+			this.Move(S,"up");
 		}
-		if(a > 0.25 & a <= 0.5) {
-			this.Move("down");
+		if(a > 25 & a <= 50) {
+			this.Move(S,"down");
 		}
-		if(a <= 0.75 & a > 0.5) {
-			this.Move("left");
+		if(a <= 75 & a > 50) {
+			this.Move(S,"left");
 		}
-		if(a > 0.75 & a <= 1) {
-			this.Move("right");
+		if(a > 75 & a <= 100) {
+			this.Move(S,"right");
 		}
 		
 		return this;

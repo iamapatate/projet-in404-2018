@@ -1,10 +1,5 @@
 package fr.uvsq.poo.monprojet;
-
-
-
 import java.util.ArrayList;
-
-
 
 public class Salle {
 
@@ -41,10 +36,36 @@ public class Salle {
 		return this.grillemin[i][j];
 	}
 
-	
+	public Salle initPnjsAndObjects(int nbpnjs, int nbobjects) {
+		// init pnjs
+		Objet nouv;
+		Pnj nouvo;
+		for(int i = 0; i < nbpnjs; i++) {
+			nouvo = new Pnj(this);
+			this.pnjs.add(nouvo);
+		}
+		
+		// init objets
+		for(int i = 0; i < nbobjects - 1; i++) {
+			int a = (int) (Math.random());
+			if(a < 0.50) {
+				nouv = new Objet("lime", this);
+			}
+			else if(a < 0.90) {
+				nouv = new Objet("surin", this);
+			}
+			else {
+				nouv = new Objet("pistol", this);
+			}
+			this.objetsdelamap.add(nouv);
+		}
+		nouv = new Objet("cle", this);
+		this.objetsdelamap.add(nouv);
+		
+		return this;
+	}
 
 	public Salle initSalleTemp() {
-
 		for(int i = 0; i < Variables.largeur_salle; i++) {
 			for(int j = 0; j < Variables.hauteur_salle; j++) {
 				if(i == 0 || j == 0) this.grillemin[i][j] = "mur";
@@ -72,9 +93,7 @@ public class Salle {
 		
 		// on initialise la place des joueurs et des objets une fois que les murs & portes sont placés
 		joueur = new Pj(this);
-		objetsdelamap.add(new Objet("cle",this));
-		pnjs.add(new Pnj(this));		
-		
+		this.initPnjsAndObjects(2,2);
 		// on place le joueur dans grillemin
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = this.joueur.getString();		
 		// on place les pnjs sur la grille de strings
@@ -103,6 +122,7 @@ public class Salle {
 				else if(this.grillemin[i][j] == "PJ") System.out.print("+");
 				else if(this.grillemin[i][j] == "porte") System.out.print("P");
 				else if(this.grillemin[i][j] == "cle") System.out.print("C");
+				else if(this.grillemin[i][j] == "lime") System.out.print("L");
 				else if(this.grillemin[i][j] == "surin") System.out.print("S");
 				else if(this.grillemin[i][j] == "pistol") System.out.print("P");
 				else if(this.grillemin[i][j] == "PNJ") System.out.print("@");
@@ -111,27 +131,34 @@ public class Salle {
 		}
 	}
 
-	
-
 	public Salle Update() {
 		// on fait bouger le booty des pnjs	
 		for(int j = 0; j < this.pnjs.size(); j++) {
-			this.pnjs.get(j).MoveAleat();
+			Pnj nouv = this.pnjs.get(j).MoveAleat(this);
+			// remplacer l'ancien pnj par celui qui a bougé
+			this.pnjs.set(j, nouv);
 		}
 		
+		// effacer les anciens pjs/pnjs
 		for(int j = 0; j< Variables.hauteur_salle; j++) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
 				if(this.grillemin[i][j].equals("PJ")) this.grillemin[i][j] = "sol";
 				if(this.grillemin[i][j].equals("PNJ")) this.grillemin[i][j] = "sol";
 			}
 		}
+		
+		// afficher les clefs et armes
+		for(int i = 0; i < this.objetsdelamap.size(); i++) {
+			this.grillemin[this.objetsdelamap.get(i).getPosX()][this.objetsdelamap.get(i).getPosY()]
+					= this.objetsdelamap.get(i).getType();
+		}
+		
+		// afficher les nouveaux pjs et pnjs
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = "PJ";
 		for(int i = 0; i < pnjs.size(); i++) {
 			this.grillemin[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = "PNJ";
-		}
-		
+		}		
 		return this;
-
 	}
 
 	
@@ -168,7 +195,19 @@ public class Salle {
 		}
 
 		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
-
+	}
+	
+	// il faut marcher sur l'objet pour le ramasser
+	
+	public Pj getObjetFromFloor() {
+			for(int i = 0; i < this.objetsdelamap.size(); i++) {
+				if(WhatsInFrontOfPlayer(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
+					this.joueur.PickUp(this.objetsdelamap.get(i));
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
+					this.objetsdelamap.remove(i);
+				}
+			}
+		return this.joueur;
 	}
 
 }

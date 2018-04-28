@@ -25,7 +25,7 @@ public class Commande {
 		action = getAction();
 		String ac;
 		if(action[0].equals("move")) {
-			S.joueur.Move(action[1]);
+			S.joueur.Move(S,action[1]);
 		}
 		else if(action[0].equals("turn")) {
 			S.joueur.Turn(action[1]);
@@ -39,6 +39,12 @@ public class Commande {
 			if(ac.equals("porte")) {
 				System.out.println("Porte ouverte, salle suivante");
 			}
+		}
+		else if(action[0].equals("take")) {
+			S.joueur = S.getObjetFromFloor();
+		}
+		else if(action[0].equals("inventory")) {
+			S.joueur.CheckStatsAndInventory();
 		}
 		else System.out.println("erreur de commande");
 		S.Update();

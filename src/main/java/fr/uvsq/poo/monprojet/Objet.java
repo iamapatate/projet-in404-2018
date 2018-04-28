@@ -11,5 +11,4 @@ public class Objet extends DansLaMap{
 	String getType() {
 		return this.type;
 	}
-	
 }
