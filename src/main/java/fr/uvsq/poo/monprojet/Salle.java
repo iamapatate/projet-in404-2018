@@ -139,11 +139,12 @@ public class Salle {
 			this.pnjs.set(j, nouv);
 		}
 		
-		// effacer les anciens pjs/pnjs
-		for(int j = 0; j< Variables.hauteur_salle; j++) {
-			for(int i = 0; i < Variables.largeur_salle; i++) {
-				if(this.grillemin[i][j].equals("PJ")) this.grillemin[i][j] = "sol";
-				if(this.grillemin[i][j].equals("PNJ")) this.grillemin[i][j] = "sol";
+		// effacer les anciens pjs/pnjs/objets qui sont sur le sol
+		for(int j = 1; j< Variables.hauteur_salle - 1; j++) {
+			for(int i = 1; i < Variables.largeur_salle - 1; i++) {
+				if(this.grillemin[i][j]!= "sol" || this.grillemin[i][j] != "mur") {
+					this.grillemin[i][j] = "sol";
+				}
 			}
 		}
 		
@@ -199,7 +200,7 @@ public class Salle {
 	
 	// il faut marcher sur l'objet pour le ramasser
 	
-	public Pj getObjetFromFloor() {
+	public Salle getObjetFromFloor() {
 			for(int i = 0; i < this.objetsdelamap.size(); i++) {
 				if(WhatsInFrontOfPlayer(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
@@ -207,7 +208,7 @@ public class Salle {
 					this.objetsdelamap.remove(i);
 				}
 			}
-		return this.joueur;
+		return this;
 	}
 
 }

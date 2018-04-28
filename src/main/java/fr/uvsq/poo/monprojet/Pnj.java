@@ -9,7 +9,6 @@ public class Pnj extends Joueur {
 	
 	public Pnj MoveAleat(Salle S) {
 		int a = (int) (Math.random() * 101);
-		System.out.println(a);
 		if(a <= 25) {
 			this.Move(S,"up");
 		}
@@ -21,8 +20,7 @@ public class Pnj extends Joueur {
 		}
 		if(a > 75 & a <= 100) {
 			this.Move(S,"right");
-		}
-		
+		}		
 		return this;
 	}
 }

@@ -41,7 +41,7 @@ public class Commande {
 			}
 		}
 		else if(action[0].equals("take")) {
-			S.joueur = S.getObjetFromFloor();
+			S = S.getObjetFromFloor();
 		}
 		else if(action[0].equals("inventory")) {
 			S.joueur.CheckStatsAndInventory();
