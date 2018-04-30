@@ -24,8 +24,8 @@ public class Salle {
 		}
 		this.Porte_N = true;
 		this.Porte_E = true;
-		this.Porte_S = true;
-		this.Porte_W = true;
+		this.Porte_S = false;
+		this.Porte_W = false;
 		this.Nb_portes = 4;
 		this.Type = -1;
 	}
@@ -208,6 +208,28 @@ public class Salle {
 					this.objetsdelamap.remove(i);
 				}
 			}
+		return this;
+	}
+	
+	public Salle Fight() {
+		// on cherche avec qui se bat le joueur
+		for(int i = 0; i < this.pnjs.size(); i++) {
+			if(WhatsInFrontOfPlayer(this.pnjs.get(i)).equals("PJ")) {
+				// on compare les attaques des deux joueurs, si égales les deux KO, sinon celui qui perd
+				Pnj fighter = this.pnjs.get(i);
+				if(this.joueur.getAttack() <= fighter.getAttack()) {
+					System.out.println("Ouch you lost 1 life");
+					this.joueur.LoseLife();
+					if(this.joueur.getAttack() == fighter.getAttack()) {
+						this.pnjs.remove(i);
+					}
+				}
+				else {
+					System.out.println("you won the fight");
+					this.pnjs.remove(i);
+				}
+			}
+		}		
 		return this;
 	}
 

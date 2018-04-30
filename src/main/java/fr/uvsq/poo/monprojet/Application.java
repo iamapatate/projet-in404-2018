@@ -40,7 +40,7 @@ public enum Application {
        // e.aff_etage();
     	System.out.println("liste des commandes: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
-    	System.out.println("pick, see, open, inventory");
+    	System.out.println("pick, see, open, attack, inventory");
     	Commande com = new Commande();
     	Salle temp = new Salle();
     	temp = temp.initSalleTemp();

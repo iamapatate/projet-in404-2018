@@ -24,4 +24,8 @@ public abstract class Joueur extends DansLaMap{
 		this.dir = dir;
 		return this;
 	}
+	
+	public int getAttack() {
+		return this.puissance;
+	}
 }

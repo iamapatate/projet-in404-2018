@@ -43,6 +43,9 @@ public class Commande {
 		else if(action[0].equals("take")) {
 			S = S.getObjetFromFloor();
 		}
+		else if(action[0].equals("attack")) {
+			S = S.Fight();
+		}
 		else if(action[0].equals("inventory")) {
 			S.joueur.CheckStatsAndInventory();
 		}

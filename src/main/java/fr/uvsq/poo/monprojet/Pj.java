@@ -38,6 +38,12 @@ public class Pj extends Joueur {
 		for(int i = 0; i < inventaire.size(); i++) {
 			System.out.print(this.inventaire.get(i).getType() + " ");
 		}
+		System.out.println();
+	}
+	
+	public Joueur LoseLife() {
+		this.vie -= 1;
+		return this;
 	}
 	
 }
