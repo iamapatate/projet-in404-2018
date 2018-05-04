@@ -43,6 +43,7 @@ public class Salle {
 		for(int i = 0; i < nbpnjs; i++) {
 			nouvo = new Pnj(this);
 			this.pnjs.add(nouvo);
+			this.grillemin[nouvo.getPosX()][nouvo.getPosY()] = "PNJ";
 		}
 		
 		// init objets
@@ -58,10 +59,11 @@ public class Salle {
 				nouv = new Objet("pistol", this);
 			}
 			this.objetsdelamap.add(nouv);
+			this.grillemin[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		}
 		nouv = new Objet("cle", this);
 		this.objetsdelamap.add(nouv);
-		
+		this.grillemin[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		return this;
 	}
 
@@ -90,21 +92,12 @@ public class Salle {
 		if(this.Porte_N == true) {
 			this.grillemin[Variables.largeur_salle/2][0] = "porte";
 		}
-		
-		// on initialise la place des joueurs et des objets une fois que les murs & portes sont placés
-		joueur = new Pj(this);
 		this.initPnjsAndObjects(2,2);
+		
+		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont placés
+		joueur = new Pj(this);
 		// on place le joueur dans grillemin
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = this.joueur.getString();		
-		// on place les pnjs sur la grille de strings
-		for(int i = 0; i < pnjs.size(); i++) {
-			this.grillemin[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = "PNJ";
-		}		
-		// on place les objets sur la grille de strings
-		for(int i = 0; i < this.objetsdelamap.size(); i++) {
-			this.grillemin[this.objetsdelamap.get(i).getPosX()][this.objetsdelamap.get(i).getPosY()] 
-					= this.objetsdelamap.get(i).getType();
-		}	
 		return this;
 	}
 
