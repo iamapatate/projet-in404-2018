@@ -164,7 +164,6 @@ public class Salle {
 	 *  si sa position le permet (limites de la matrice)
 
 	 */
-
 	public String WhatsInFrontOfPlayer(Joueur J) {
 
 		String dirplayer = J.getDir();
@@ -204,25 +203,38 @@ public class Salle {
 		return this;
 	}
 	
-	public Salle Fight() {
-		// on cherche avec qui se bat le joueur
+	
+	public Salle PnjLookingForFight() {
 		for(int i = 0; i < this.pnjs.size(); i++) {
-			if(WhatsInFrontOfPlayer(this.pnjs.get(i)).equals("PJ")) {
-				// on compare les attaques des deux joueurs, si égales les deux KO, sinon celui qui perd
-				Pnj fighter = this.pnjs.get(i);
-				if(this.joueur.getAttack() <= fighter.getAttack()) {
-					System.out.println("Ouch you lost 1 life");
-					this.joueur.LoseLife();
-					if(this.joueur.getAttack() == fighter.getAttack()) {
-						this.pnjs.remove(i);
-					}
-				}
-				else {
-					System.out.println("you won the fight");
-					this.pnjs.remove(i);
-				}
+			if(this.pnjs.get(i).LookingForFight(this).equals("RAS")) {
+				System.out.println("RAS");
+				return this;
 			}
-		}		
+			else if(this.pnjs.get(i).LookingForFight(this).equals("gagné")) {
+				this.joueur.LoseLife();				
+				System.out.println("Le Pnj gagné le combat");
+			}
+			else if(this.pnjs.get(i).LookingForFight(this).equals("perdu")) {
+				this.pnjs.remove(i);
+				System.out.println("Vous gagnez le combat");
+			}
+			else if(this.pnjs.get(i).LookingForFight(this).equals("égalité")){
+				this.pnjs.remove(i);
+				this.joueur.LoseLife();
+				System.out.println("Le joueur tue le PNJ mais se blesse");
+			}	
+		}
+		return this;
+	}
+	
+	public Salle ChangeRoom() {
+		if(this.joueur.FindInInventory("cle") == 1 && this.WhatsInFrontOfPlayer(this.joueur).equals("porte")) {
+			System.out.println("Porte ouverte, passage à une nouvelle salle");
+			Salle nouv = new Salle();
+			nouv.joueur = this.joueur;
+			return nouv;
+		}
+		else System.out.println("Trouvez la clé du niveau pour passer à la salle suivante");
 		return this;
 	}
 

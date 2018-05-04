@@ -24,6 +24,8 @@ public class Commande {
 		String[] action;
 		action = getAction();
 		String ac;
+		S.PnjLookingForFight();
+
 		if(action[0].equals("move")) {
 			S.joueur.Move(S,action[1]);
 		}
@@ -35,16 +37,10 @@ public class Commande {
 			System.out.println(ac);
 		}
 		else if(action[0].equals("open")) {
-			ac = S.WhatsInFrontOfPlayer(S.joueur);
-			if(ac.equals("porte")) {
-				System.out.println("Porte ouverte, salle suivante");
-			}
+			S = S.ChangeRoom();
 		}
 		else if(action[0].equals("take")) {
 			S = S.getObjetFromFloor();
-		}
-		else if(action[0].equals("attack")) {
-			S = S.Fight();
 		}
 		else if(action[0].equals("inventory")) {
 			S.joueur.CheckStatsAndInventory();

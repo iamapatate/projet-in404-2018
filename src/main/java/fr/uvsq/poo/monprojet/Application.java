@@ -45,7 +45,7 @@ public enum Application {
     	Salle temp = new Salle();
     	temp = temp.initSalleTemp();
     	temp.affSalleTemp();
-    	for(int i = 0; i < 5; i++) {
+    	for(int i = 0; i < 100; i++) {
     		com.analyseCommandeJoueur(temp);
     		temp.affSalleTemp();
     	}

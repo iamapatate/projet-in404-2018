@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public class Pj extends Joueur {
 	protected int vie;
-	protected ArrayList<Objet> inventaire;
 
 	public Pj(Salle S) {
 		super(S);
 		this.puissance = 30;
 		this.vie = 3;
-		this.inventaire = new ArrayList<Objet>();
 		this.type = "PJ";
 	}
 	
