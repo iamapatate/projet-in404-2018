@@ -34,12 +34,13 @@ public class Pnj extends Joueur {
 		if(S.getString(this.getPosX() + 1, this.getPosY()).equals("PJ") || 
 				S.getString(this.getPosX(), this.getPosY() + 1).equals("PJ") || 
 				S.getString(this.getPosX() - 1, this.getPosY()).equals("PJ") ||
-				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")) {
+				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")|| 
+				S.getString(this.getPosX() , this.getPosY()).equals("PJ")) {
 			if(this.getAttack() > S.joueur.getAttack()) {
-				return "gagné";
+				return "gagnÃ©";
 			}
 			else if(this.getAttack() == S.joueur.getAttack()) {
-				return "égalité";
+				return "Ã©galitÃ©";
 			}
 			else if(this.getAttack() < S.joueur.getAttack()) {
 				return "perdu";
