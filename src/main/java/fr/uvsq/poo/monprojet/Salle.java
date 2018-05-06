@@ -187,22 +187,22 @@ public class Salle {
 		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}
 	
-	public String DevantJoueur(Joueur J) {
+	private String DevantJoueur(Joueur J) {
 		if(J.getPosY() > 0)
 			return getString(J.getPosX(), J.getPosY() - 1);
 		return "trop haut";
 	}
-	public String DerriereJoueur(Joueur J) {
+	private String DerriereJoueur(Joueur J) {
 		if(J.getPosY() < Variables.hauteur_salle - 1)
 			return getString(J.getPosX(), J.getPosY() + 1);
 		return "trop bas";
 	}
-	public String ADroiteJoueur(Joueur J) {
+	private String ADroiteJoueur(Joueur J) {
 		if(J.getPosX() < Variables.largeur_salle - 1)
 			return getString(J.getPosX() + 1, J.getPosY());
 		return "trop à droite";
 	}
-	public String AGaucheJoueur(Joueur J) {
+	private String AGaucheJoueur(Joueur J) {
 		if(J.getPosX() > 0)
 			return getString(J.getPosX() - 1, J.getPosY());
 		return "trop à gauche";
