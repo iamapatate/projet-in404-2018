@@ -191,8 +191,6 @@ public class Salle {
 		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}
 	
-	// il faut marcher sur l'objet pour le ramasser
-	
 	public Salle getObjetFromFloor() {
 			for(int i = 0; i < this.objetsdelamap.size(); i++) {
 				if(WhatsInFrontOfPlayer(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
