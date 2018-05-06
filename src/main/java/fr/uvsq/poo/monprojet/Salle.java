@@ -1,4 +1,5 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
+
 import java.util.ArrayList;
 
 public class Salle {
@@ -102,9 +103,7 @@ public class Salle {
 	}
 
 	/*
-
 	 *	Affiche la salle courante 
-
 	 */	
 
 	public void affSalleTemp() {
@@ -159,11 +158,8 @@ public class Salle {
 	
 
 	/*
-
 	 *  Renvoie un String symbolisant ce qui se trouve en face du joueur j
-
 	 *  si sa position le permet (limites de la matrice)
-
 	 */
 	public String WhatsInFrontOfPlayer(Joueur J) {
 
@@ -191,9 +187,47 @@ public class Salle {
 		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}
 	
+	public String DevantJoueur(Joueur J) {
+		if(J.getPosY() > 0)
+			return getString(J.getPosX(), J.getPosY() - 1);
+		return "trop haut";
+	}
+	public String DerriereJoueur(Joueur J) {
+		if(J.getPosY() < Variables.hauteur_salle - 1)
+			return getString(J.getPosX(), J.getPosY() + 1);
+		return "trop bas";
+	}
+	public String ADroiteJoueur(Joueur J) {
+		if(J.getPosX() < Variables.largeur_salle - 1)
+			return getString(J.getPosX() + 1, J.getPosY());
+		return "trop à droite";
+	}
+	public String AGaucheJoueur(Joueur J) {
+		if(J.getPosX() > 0)
+			return getString(J.getPosX() - 1, J.getPosY());
+		return "trop à gauche";
+	}
+	
+	// il faut marcher sur l'objet pour le ramasser
+	
 	public Salle getObjetFromFloor() {
 			for(int i = 0; i < this.objetsdelamap.size(); i++) {
-				if(WhatsInFrontOfPlayer(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
+				if(DevantJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
+					this.joueur.PickUp(this.objetsdelamap.get(i));
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
+					this.objetsdelamap.remove(i);
+				}
+				else if(DerriereJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
+					this.joueur.PickUp(this.objetsdelamap.get(i));
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
+					this.objetsdelamap.remove(i);
+				}
+				else if(ADroiteJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
+					this.joueur.PickUp(this.objetsdelamap.get(i));
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
+					this.objetsdelamap.remove(i);
+				}
+				else if(AGaucheJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
 					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
 					this.objetsdelamap.remove(i);
