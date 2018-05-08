@@ -24,7 +24,6 @@ public class Commande {
 		String[] action;
 		action = getAction();
 		String ac;
-		S.PnjLookingForFight();
 
 		if(action[0].equals("move")) {
 			S.joueur.Move(S,action[1]);

@@ -1,14 +1,34 @@
 package fr.uvsq.poo.monprojet;
 
 public class Objet extends DansLaMap{
-	String type;
+	private String type;
 	
 	public Objet(String type, Salle S) {
 		super(S);
 		this.type = type;
 	}
 	
-	String getType() {
+	public Objet(Salle S) {
+		super(S);	
+		double a = (Math.random());
+		if(a < 0.1) {
+			this.type = "pistol";
+		}
+		else if(a > 0.1 & a < 0.4) {
+			this.type = "surin";
+		}
+		else if(a > 0.4) {
+			this.type = "lime";
+		}
+	}
+	
+	public Objet(Salle S, int posX, int posY, String type) {
+		super(S);
+		this.x = posX; this.y = posY;
+		this.type = type;
+	}
+	
+	public String getType() {
 		return this.type;
 	}
 }

@@ -1,4 +1,5 @@
 package fr.uvsq.poo.monprojet;
+import java.util.*;
 
 public class Pnj extends Joueur {
 
@@ -6,6 +7,8 @@ public class Pnj extends Joueur {
 		super(S);
 		this.type = "PNJ";
 		this.puissance = 30;
+		this.inventaire = new ArrayList<Objet>();
+		this.inventaire.add(new Objet(S));
 	}
 	
 	public Pnj MoveAleat(Salle S) {
@@ -37,14 +40,15 @@ public class Pnj extends Joueur {
 				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")|| 
 				S.getString(this.getPosX() , this.getPosY()).equals("PJ")) {
 			if(this.getAttack() > S.joueur.getAttack()) {
-				return "gagnÃ©";
+				return "gagné";
 			}
 			else if(this.getAttack() == S.joueur.getAttack()) {
-				return "Ã©galitÃ©";
+				return "égalité";
 			}
 			else if(this.getAttack() < S.joueur.getAttack()) {
 				return "perdu";
 			}
+			System.out.println("j'ai vu quelqu'un mais je n'ai pas réagi");
 		}
 		return "RAS";
 	}

@@ -49,16 +49,7 @@ public class Salle {
 		
 		// init objets
 		for(int i = 0; i < nbobjects - 1; i++) {
-			int a = (int) (Math.random());
-			if(a < 0.50) {
-				nouv = new Objet("lime", this);
-			}
-			else if(a < 0.90) {
-				nouv = new Objet("surin", this);
-			}
-			else {
-				nouv = new Objet("pistol", this);
-			}
+			nouv = new Objet(this);
 			this.objetsdelamap.add(nouv);
 			this.grillemin[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		}
@@ -95,7 +86,7 @@ public class Salle {
 		}
 		this.initPnjsAndObjects(2,2);
 		
-		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont placÃ©s
+		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont placés
 		joueur = new Pj(this);
 		// on place le joueur dans grillemin
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = this.joueur.getString();		
@@ -107,13 +98,13 @@ public class Salle {
 	 */	
 
 	public void affSalleTemp() {
-		int a=9619;
+		int a= 9619;
 		for(int j = 0; j < Variables.hauteur_salle; j++) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
 				if(this.grillemin[i][j] == "mur") System.out.print((char)a);
 				else if(this.grillemin[i][j] == "sol") System.out.print(".");
 				else if(this.grillemin[i][j] == "PJ") System.out.print("+");
-				else if(this.grillemin[i][j] == "porte") System.out.print("P");
+				else if(this.grillemin[i][j] == "porte") System.out.print("O");
 				else if(this.grillemin[i][j] == "cle") System.out.print("C");
 				else if(this.grillemin[i][j] == "lime") System.out.print("L");
 				else if(this.grillemin[i][j] == "surin") System.out.print("S");
@@ -125,13 +116,15 @@ public class Salle {
 	}
 
 	public Salle Update() {
+		this.PnjLookingForFight();
+
 		// on fait bouger le booty des pnjs	
 		for(int j = 0; j < this.pnjs.size(); j++) {
 			Pnj nouv = this.pnjs.get(j).MoveAleat(this);
-			// remplacer l'ancien pnj par celui qui a bougÃ©
+			// remplacer l'ancien pnj par celui qui a bougé
 			this.pnjs.set(j, nouv);
 		}
-		
+	
 		// effacer les anciens pjs/pnjs/objets qui sont sur le sol
 		for(int j = 1; j< Variables.hauteur_salle - 1; j++) {
 			for(int i = 1; i < Variables.largeur_salle - 1; i++) {
@@ -150,7 +143,7 @@ public class Salle {
 		// afficher les nouveaux pjs et pnjs
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = "PJ";
 		for(int i = 0; i < pnjs.size(); i++) {
-			this.grillemin[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = "PNJ";
+			this.grillemin[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = this.pnjs.get(i).getString();
 		}		
 		return this;
 	}
@@ -184,7 +177,7 @@ public class Salle {
 			return getString(J.getPosX() + 1, J.getPosY());
 		}
 
-		return "erreur tu essaies d'interagir avec qq chose qui te dÃ©passe";
+		return "erreur tu essaies d'interagir avec qq chose qui te dépasse";
 	}
 	
 	private String DevantJoueur(Joueur J) {
@@ -200,12 +193,12 @@ public class Salle {
 	private String ADroiteJoueur(Joueur J) {
 		if(J.getPosX() < Variables.largeur_salle - 1)
 			return getString(J.getPosX() + 1, J.getPosY());
-		return "trop Ã  droite";
+		return "trop à droite";
 	}
 	private String AGaucheJoueur(Joueur J) {
 		if(J.getPosX() > 0)
 			return getString(J.getPosX() - 1, J.getPosY());
-		return "trop Ã  gauche";
+		return "trop à gauche";
 	}
 	
 	// il faut marcher sur l'objet pour le ramasser
@@ -214,22 +207,22 @@ public class Salle {
 			for(int i = 0; i < this.objetsdelamap.size(); i++) {
 				if(DevantJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÃ©");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
 					this.objetsdelamap.remove(i);
 				}
 				else if(DerriereJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÃ©");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
 					this.objetsdelamap.remove(i);
 				}
 				else if(ADroiteJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÃ©");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
 					this.objetsdelamap.remove(i);
 				}
 				else if(AGaucheJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÃ©");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassé");
 					this.objetsdelamap.remove(i);
 				}
 			}
@@ -243,33 +236,40 @@ public class Salle {
 				System.out.println("RAS");
 				return this;
 			}
-			else if(this.pnjs.get(i).LookingForFight(this).equals("gagnÃ©")) {
+			else if(this.pnjs.get(i).LookingForFight(this).equals("gagné")) {
 				this.joueur.LoseLife();				
-				System.out.println("Le Pnj gagnÃ© le combat");
+				System.out.println("Le Pnj gagne le combat");
 			}
 			else if(this.pnjs.get(i).LookingForFight(this).equals("perdu")) {
+				if(!this.pnjs.get(i).getInventory().isEmpty()) {
+					Objet nouv = new Objet(this, this.pnjs.get(i).getPosX(), this.pnjs.get(i).getPosY(), this.pnjs.get(i).getInventory().get(0).getType());
+					this.objetsdelamap.add(nouv);					
+				}
+				System.out.println("Vous gagnez le combat, oh! Le pnj a fait tomber " + this.pnjs.get(i).getInventory().get(0).getType());
 				this.pnjs.remove(i);
-				System.out.println("Vous gagnez le combat");
 			}
-			else if(this.pnjs.get(i).LookingForFight(this).equals("Ã©galitÃ©")){
+			else if(this.pnjs.get(i).LookingForFight(this).equals("égalité")){
+				if(!this.pnjs.get(i).getInventory().isEmpty()) {
+					Objet nouv = new Objet(this, this.pnjs.get(i).getPosX(), this.pnjs.get(i).getPosY(), this.pnjs.get(i).getInventory().get(0).getType());
+					this.objetsdelamap.add(nouv);					
+				}
+				System.out.println("Le joueur tue le PNJ mais se blesse, oh! Le pnj a fait tomber" + this.pnjs.get(i).getInventory().get(0).getType());
 				this.pnjs.remove(i);
 				this.joueur.LoseLife();
-				System.out.println("Le joueur tue le PNJ mais se blesse");
 			}	
 		}
 		return this;
 	}
 	
 	public Salle ChangeRoom() {
-		if(this.joueur.FindInInventory("cle") == 1 && this.WhatsInFrontOfPlayer(this.joueur).equals("porte")) {
-			System.out.println("Porte ouverte, passage Ã  une nouvelle salle");
+		if(this.joueur.IsInInventory("cle") == 1) {
+			System.out.println("Porte ouverte, passage à une nouvelle salle");
 			Salle nouv = new Salle();
 			nouv.joueur = this.joueur;
 			return nouv;
 		}
-		else System.out.println("Trouvez la clÃ© du niveau pour passer Ã  la salle suivante");
+		else System.out.println("Trouvez la clé du niveau pour passer à la salle suivante");
 		return this;
 	}
 
 }
-

@@ -1,6 +1,6 @@
 package fr.uvsq.poo.monprojet;
 
-public class DansLaMap {
+public abstract class DansLaMap {
 	protected int x, y;
 	String type;
 	

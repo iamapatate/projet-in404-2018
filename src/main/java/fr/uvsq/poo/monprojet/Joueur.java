@@ -36,7 +36,7 @@ public abstract class Joueur extends DansLaMap{
 		return this.inventaire;
 	}
 	
-	public int FindInInventory(String type) {
+	public int IsInInventory(String type) {
 		for(int i = 0; i < this.inventaire.size(); i++) {
 			if(this.inventaire.get(i).getType().equals(type)) {
 				return 1;
