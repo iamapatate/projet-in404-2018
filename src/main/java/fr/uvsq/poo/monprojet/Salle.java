@@ -4,33 +4,25 @@ import java.util.ArrayList;
 
 public class Salle {
 
-	String grillemin[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
-	ArrayList<Objet> objetsdelamap = new ArrayList<Objet>();
-	ArrayList<Pnj> pnjs = new ArrayList<Pnj>();
-	boolean Porte_N;
-	boolean Porte_E;
-	boolean Porte_S;
-	boolean Porte_W;
-	int Nb_portes;
-	int Type;
-	Pj joueur;
-
+	String grille_string[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
+	int Portes[] = new int[4]; // [0] = Nord, [1] = Est, [2] = Sud, [3] = West // 0 = faux, 1 = vrai, 2 = bloqu√©
 	
-
-	public Salle() {		
-		for(int i = 0; i < Variables.largeur_salle; i++) {
-			for(int j = 0; j < Variables.hauteur_salle; j++) {
-				this.grillemin[i][j] = "sol";
+	public Salle() {
+		for(int i=0;i<Variables.largeur_salle;i++) {
+			for(int j=0;j<Variables.hauteur_salle;j++) {
+				if(i == 0 || i == Variables.largeur_salle) {
+					this.grille_string[i][j] = "mur";
+				}
+				else if(j == 0 || j == Variables.hauteur_salle) {
+					this.grille_string[i][j] = "mur";
+				}
+				else this.grille_string[i][j] = "sol";
+				for(int k=0;k<4;k++) {
+					this.Portes[k]= 0;
+				}
 			}
 		}
-		this.Porte_N = true;
-		this.Porte_E = true;
-		this.Porte_S = false;
-		this.Porte_W = false;
-		this.Nb_portes = 4;
-		this.Type = -1;
 	}
-
 	
 
 	public String getString(int i, int j) {
@@ -86,7 +78,7 @@ public class Salle {
 		}
 		this.initPnjsAndObjects(2,2);
 		
-		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont placÈs
+		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont plac√©s
 		joueur = new Pj(this);
 		// on place le joueur dans grillemin
 		this.grillemin[this.joueur.getPosX()][this.joueur.getPosY()] = this.joueur.getString();		
@@ -121,7 +113,7 @@ public class Salle {
 		// on fait bouger le booty des pnjs	
 		for(int j = 0; j < this.pnjs.size(); j++) {
 			Pnj nouv = this.pnjs.get(j).MoveAleat(this);
-			// remplacer l'ancien pnj par celui qui a bougÈ
+			// remplacer l'ancien pnj par celui qui a boug√©
 			this.pnjs.set(j, nouv);
 		}
 	
@@ -177,7 +169,7 @@ public class Salle {
 			return getString(J.getPosX() + 1, J.getPosY());
 		}
 
-		return "erreur tu essaies d'interagir avec qq chose qui te dÈpasse";
+		return "erreur tu essaies d'interagir avec qq chose qui te d√©passe";
 	}
 	
 	private String DevantJoueur(Joueur J) {
@@ -193,12 +185,12 @@ public class Salle {
 	private String ADroiteJoueur(Joueur J) {
 		if(J.getPosX() < Variables.largeur_salle - 1)
 			return getString(J.getPosX() + 1, J.getPosY());
-		return "trop ‡ droite";
+		return "trop √† droite";
 	}
 	private String AGaucheJoueur(Joueur J) {
 		if(J.getPosX() > 0)
 			return getString(J.getPosX() - 1, J.getPosY());
-		return "trop ‡ gauche";
+		return "trop √† gauche";
 	}
 	
 	// il faut marcher sur l'objet pour le ramasser
@@ -207,22 +199,22 @@ public class Salle {
 			for(int i = 0; i < this.objetsdelamap.size(); i++) {
 				if(DevantJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÈ");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramass√©");
 					this.objetsdelamap.remove(i);
 				}
 				else if(DerriereJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÈ");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramass√©");
 					this.objetsdelamap.remove(i);
 				}
 				else if(ADroiteJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÈ");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramass√©");
 					this.objetsdelamap.remove(i);
 				}
 				else if(AGaucheJoueur(this.joueur).equals(this.getString(this.objetsdelamap.get(i).getPosX(),this.objetsdelamap.get(i).getPosY()))) {
 					this.joueur.PickUp(this.objetsdelamap.get(i));
-					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramassÈ");
+					System.out.println("objet " + this.objetsdelamap.get(i).getType() + " ramass√©");
 					this.objetsdelamap.remove(i);
 				}
 			}
@@ -236,7 +228,7 @@ public class Salle {
 				System.out.println("RAS");
 				return this;
 			}
-			else if(this.pnjs.get(i).LookingForFight(this).equals("gagnÈ")) {
+			else if(this.pnjs.get(i).LookingForFight(this).equals("gagn√©")) {
 				this.joueur.LoseLife();				
 				System.out.println("Le Pnj gagne le combat");
 			}
@@ -248,7 +240,7 @@ public class Salle {
 				System.out.println("Vous gagnez le combat, oh! Le pnj a fait tomber " + this.pnjs.get(i).getInventory().get(0).getType());
 				this.pnjs.remove(i);
 			}
-			else if(this.pnjs.get(i).LookingForFight(this).equals("ÈgalitÈ")){
+			else if(this.pnjs.get(i).LookingForFight(this).equals("√©galit√©")){
 				if(!this.pnjs.get(i).getInventory().isEmpty()) {
 					Objet nouv = new Objet(this, this.pnjs.get(i).getPosX(), this.pnjs.get(i).getPosY(), this.pnjs.get(i).getInventory().get(0).getType());
 					this.objetsdelamap.add(nouv);					
@@ -263,12 +255,12 @@ public class Salle {
 	
 	public Salle ChangeRoom() {
 		if(this.joueur.IsInInventory("cle") == 1) {
-			System.out.println("Porte ouverte, passage ‡ une nouvelle salle");
+			System.out.println("Porte ouverte, passage √† une nouvelle salle");
 			Salle nouv = new Salle();
 			nouv.joueur = this.joueur;
 			return nouv;
 		}
-		else System.out.println("Trouvez la clÈ du niveau pour passer ‡ la salle suivante");
+		else System.out.println("Trouvez la cl√© du niveau pour passer √† la salle suivante");
 		return this;
 	}
 
