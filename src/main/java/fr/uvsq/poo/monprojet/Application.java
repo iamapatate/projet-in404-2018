@@ -36,7 +36,6 @@ public enum Application {
     	/*Commande com = new Commande();
     	Salle temp = new Salle();
     	temp = temp.initSalleTemp();
-    	
     	int test = -1;
     	
     	System.out.println("Load Game? y/n");
@@ -51,14 +50,13 @@ public enum Application {
    	for(int i = 0; i < 100; i++) {
     		com.analyseCommandeJoueur(temp);
     		temp.affSalleTemp();
-    	}*/
+    	}
+    }*/
     	Etage test = new Etage();
     	test = test.initialisation();
     	test = test.generation();
-    	test.aff_salle(2,2);
-    }
-
-
+    	test.GetSalle(2,2).affSalleTemp();
+}
 
     /**
 

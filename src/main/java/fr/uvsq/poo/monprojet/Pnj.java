@@ -8,7 +8,12 @@ public class Pnj extends Joueur {
 		this.type = "PNJ";
 		this.puissance = 30;
 		this.inventaire = new ArrayList<Objet>();
-		this.inventaire.add(new Objet(S));
+		
+		// une chance sur deux que le PNJ porte un objet
+		double a = Math.random();
+		if(a < 0.5) {
+			this.inventaire.add(new Objet(S));
+		}
 	}
 	
 	public Pnj MoveAleat(Salle S) {

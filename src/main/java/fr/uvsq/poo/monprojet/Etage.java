@@ -115,7 +115,7 @@ public class Etage {
 		return this;
 	}
 
-	public void aff_salle(int x,int y) {
-		this.grille[x][y].affSalleTemp();
+	public Salle GetSalle(int x,int y) {
+		return this.grille[x][y];
 	}
 }
