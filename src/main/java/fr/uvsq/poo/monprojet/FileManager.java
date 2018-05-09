@@ -26,8 +26,10 @@ public abstract class FileManager {
 		return true;
 	}
 	
-	public void LoadGame(File f) {
-		
+	public Etage LoadGame(File f) {
+		Etage E = new Etage();
+		// lire fichier
+		return E;
 	}
 	
 	public void SaveGame(String nameoffile, Etage E){
