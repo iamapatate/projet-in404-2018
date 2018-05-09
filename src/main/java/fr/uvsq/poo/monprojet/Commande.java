@@ -20,6 +20,28 @@ public class Commande {
 		return split;
 	}
 	
+	public int analyseCommandeFichier(String Message) {
+		String[] action;
+		action = getAction();
+		if(Message.equals("loadgame")) {
+			if(action[0].equals("y")) {
+				System.out.println("Vous souhaitez continuer d'une ancienne sauvegarde");
+				return 1;
+			}
+			else if(action[0].equals("n")){
+				System.out.println("Vous souhaitez faire un nouveau jeu");
+				return 0;
+			}
+			else {
+				System.err.println("Entrez y/n en minuscules");
+				return -1;
+			}
+		}
+		System.out.println("Aucune information valide");
+		return -1;
+	}
+	
+	
 	public void analyseCommandeJoueur(Salle S) {
 		String[] action;
 		action = getAction();
