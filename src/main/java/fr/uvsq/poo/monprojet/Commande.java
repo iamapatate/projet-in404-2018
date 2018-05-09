@@ -12,7 +12,7 @@ public class Commande {
 	
 	/*
 	 *  Retourne un tableau de mots qui composent la commande
-	 *  d'entr�e du joueur, si la commande est "move up", split[0] = move, split[1] = up.
+	 *  d'entrée du joueur, si la commande est "move up", split[0] = move, split[1] = up.
 	 */
 	public String[] getAction() {
 		this.action = this.sc.nextLine();
@@ -20,6 +20,10 @@ public class Commande {
 		return split;
 	}
 	
+	
+	// analyse les commandes de fichier en fonction du message en parametre envoyé par le main
+	// message vaut loadgame au debut du jeu pour savoir si le joueur souhaite faire un nouveau jeu ou charger une partie
+	// retourne 1 si oui, 0 si non, -1 si l'utilisateur n'a rien entré d'exploitable
 	public int analyseCommandeFichier(String Message) {
 		String[] action;
 		action = getAction();
