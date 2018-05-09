@@ -13,10 +13,10 @@ public class Salle {
 	public Salle() {
 		for(int i=0;i<Variables.largeur_salle;i++) {
 			for(int j=0;j<Variables.hauteur_salle;j++) {
-				if(i == 0 || i == Variables.largeur_salle) {
+				if(i == 0 || i == Variables.largeur_salle-1) {
 					this.grille_string[i][j] = "mur";
 				}
-				else if(j == 0 || j == Variables.hauteur_salle) {
+				else if(j == 0 || j == Variables.hauteur_salle-1) {
 					this.grille_string[i][j] = "mur";
 				}
 				else this.grille_string[i][j] = "sol";
