@@ -67,16 +67,16 @@ public class Salle {
 			}
 		}
 		
-		if(this.Porte_E == true) {
+		if(this.Portes[1] == 1) {
 			this.grille_string[Variables.largeur_salle-1][Variables.hauteur_salle/2] = "porte";
 		}
-		if(this.Porte_S == true) {
+		if(this.Portes[2] == 1) {
 			this.grille_string[Variables.largeur_salle/2][Variables.hauteur_salle-1] = "porte";
 		}
-		if(this.Porte_W == true) {
+		if(this.Portes[3] == 1) {
 			this.grille_string[0][Variables.hauteur_salle/2] = "porte";
 		}
-		if(this.Porte_N == true) {
+		if(this.Portes[0] == 1) {
 			this.grille_string[Variables.largeur_salle/2][0] = "porte";
 		}
 		this.initPnjsAndObjects(2,2);

@@ -20,10 +20,10 @@ public abstract class Joueur extends DansLaMap{
 	 *  Commandes en anglais
 	 */
 	public Joueur Move(Salle S, String dir) {
-		if(dir.equals("down") && this.getPosY() < Variables.hauteur_salle - 2 && S.grillemin[this.getPosX()][this.getPosY() + 1] == "sol") this.y += 1;
-		else if(dir.equals("up") && this.getPosY() > 1 && S.grillemin[this.getPosX()][this.getPosY() - 1] == "sol") this.y -= 1;
-		else if(dir.equals("left") && this.getPosX() > 1 && S.grillemin[this.getPosX()-1][this.getPosY()] == "sol") this.x -= 1;
-		else if(dir.equals("right") && this.getPosX() < Variables.largeur_salle - 1 && S.grillemin[this.getPosX() + 1][this.getPosY()] == "sol") this.x += 1;
+		if(dir.equals("down") && this.getPosY() < Variables.hauteur_salle - 2 && S.grille_string[this.getPosX()][this.getPosY() + 1] == "sol") this.y += 1;
+		else if(dir.equals("up") && this.getPosY() > 1 && S.grille_string[this.getPosX()][this.getPosY() - 1] == "sol") this.y -= 1;
+		else if(dir.equals("left") && this.getPosX() > 1 && S.grille_string[this.getPosX()-1][this.getPosY()] == "sol") this.x -= 1;
+		else if(dir.equals("right") && this.getPosX() < Variables.largeur_salle - 1 && S.grille_string[this.getPosX() + 1][this.getPosY()] == "sol") this.x += 1;
 		this.dir = dir;
 		return this;
 	}
