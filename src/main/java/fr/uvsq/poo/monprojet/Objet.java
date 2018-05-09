@@ -10,14 +10,14 @@ public class Objet extends DansLaMap{
 	
 	public Objet(Salle S) {
 		super(S);	
-		double a = (Math.random());
+		double a = Math.random();
 		if(a < 0.1) {
 			this.type = "pistol";
 		}
-		else if(a > 0.1 & a < 0.4) {
+		else if(a < 0.4) {
 			this.type = "surin";
 		}
-		else if(a > 0.4) {
+		else {
 			this.type = "lime";
 		}
 	}

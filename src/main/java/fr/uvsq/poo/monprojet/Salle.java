@@ -32,67 +32,56 @@ public class Salle {
 		return this.grille_string[i][j];
 	}
 
-	public Salle initPnjsAndObjects(int nbpnjs, int nbobjects) {
-		// init pnjs
-		Objet nouv;
-		Pnj nouvo;
-		for(int i = 0; i < nbpnjs; i++) {
-			nouvo = new Pnj(this);
-			this.pnjs.add(nouvo);
-			this.grille_string[nouvo.getPosX()][nouvo.getPosY()] = "PNJ";
+	private Salle initPnjs(int nb_PNJs) {
+		Pnj nouv;
+		for(int i = 0; i < nb_PNJs; i++) {
+			nouv = new Pnj(this);
+			this.pnjs.add(nouv);
+			this.grille_string[nouv.getPosX()][nouv.getPosY()] = "PNJ";
 		}
+		return this;
+	}
 		
-		// init objets
-		for(int i = 0; i < nbobjects - 1; i++) {
+	private Salle initObjects(int nb_objects) {
+		Objet nouv;
+		for(int i = 0; i < nb_objects - 1; i++) {
 			nouv = new Objet(this);
 			this.objetsdelamap.add(nouv);
 			this.grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		}
-		nouv = new Objet("cle", this);
-		this.objetsdelamap.add(nouv);
-		this.grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		return this;
 	}
 
-	public Salle initSalleTemp() {
-		for(int i = 0; i < Variables.largeur_salle; i++) {
-			for(int j = 0; j < Variables.hauteur_salle; j++) {
-				if(i == 0 || j == 0) this.grille_string[i][j] = "mur";
-				else if(i == 0 || j == Variables.hauteur_salle - 1) 
-					this.grille_string[i][j] = "mur";
-				else if((j == 0) || (i == Variables.largeur_salle - 1) ) 
-					this.grille_string[i][j] = "mur";
-				else if(j == Variables.hauteur_salle - 1 || i == Variables.largeur_salle - 1)
-					this.grille_string[i][j] = "mur";
+	private Salle initDoors() {
+		for(int k=0;k<4;k++) {
+			if(this.Portes[k] == 1) {
+				switch(k) {
+					case 0 :
+						this.grille_string[Variables.largeur_salle/2][Variables.hauteur_salle-1] = "porte";
+						break;
+					case 1 :
+						this.grille_string[Variables.largeur_salle-1][Variables.hauteur_salle/2] = "porte";
+						break;
+					case 2 :
+						this.grille_string[Variables.largeur_salle/2][0] = "porte";
+						break;
+					case 3 :
+						this.grille_string[0][Variables.hauteur_salle/2] = "porte";
+						break;
+				}
 			}
 		}
-		
-		if(this.Portes[1] == 1) {
-			this.grille_string[Variables.largeur_salle-1][Variables.hauteur_salle/2] = "porte";
-		}
-		if(this.Portes[2] == 1) {
-			this.grille_string[Variables.largeur_salle/2][Variables.hauteur_salle-1] = "porte";
-		}
-		if(this.Portes[3] == 1) {
-			this.grille_string[0][Variables.hauteur_salle/2] = "porte";
-		}
-		if(this.Portes[0] == 1) {
-			this.grille_string[Variables.largeur_salle/2][0] = "porte";
-		}
-		this.initPnjsAndObjects(2,2);
-		
-		// on initialise la place des joueurs et des objets une fois que les murs & portes & pnjs & objets sont placés
-		joueur = new Pj(this);
-		// on place le joueur dans grille_string
-		this.grille_string[this.joueur.getPosX()][this.joueur.getPosY()] = this.joueur.getString();		
+		return this;
+	}
+	
+	public Salle remplirSalle(int nb_objects,int nb_PNJs) {
+		this.initDoors();
+		this.initObjects(nb_objects);
+		this.initPnjs(nb_PNJs);
 		return this;
 	}
 
-	/*
-	 *	Affiche la salle courante 
-	 */	
-
-	public void affSalleTemp() {
+	public void affSalle() {
 		int a= 9619;
 		for(int j = 0; j < Variables.hauteur_salle; j++) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {

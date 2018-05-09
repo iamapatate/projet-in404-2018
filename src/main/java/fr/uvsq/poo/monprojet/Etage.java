@@ -38,7 +38,8 @@ public class Etage {
 		y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
 		graphe[x][y] = 1;
 		// On parcourt tout le graphe
-		for(int i=0;i<Variables.Nb_largeur_salles*Variables.Nb_hauteur_salles;i++){
+		int nb_som_visit = 0;
+		while(nb_som_visit<Variables.Nb_hauteur_salles*Variables.Nb_largeur_salles){
 			// On choisit un sommet marque au hasard
 			do{
 				x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
@@ -111,7 +112,24 @@ public class Etage {
 						break;
 				}
 			}
+			nb_som_visit++;
 		}
+		return this;
+	}
+	
+	public Etage remplirEtage(int nb_Objets_max,int nb_PNJs_max) {
+		//On remplit chaque salle d'objets au hasard
+		for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
+			}
+		}
+		//On place une cle au hasard dans tout l'etage
+		int x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
+		int y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
+		Objet nouv = new Objet("cle",this.grille[x][y]);
+		this.grille[x][y].objetsdelamap.add(nouv);
+		this.grille[x][y].grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		return this;
 	}
 

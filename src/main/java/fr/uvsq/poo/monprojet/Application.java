@@ -51,11 +51,16 @@ public enum Application {
     		com.analyseCommandeJoueur(temp);
     		temp.affSalleTemp();
     	}
-    }*/
+    }
     	Etage test = new Etage();
     	test = test.initialisation();
     	test = test.generation();
-    	test.GetSalle(2,2).affSalleTemp();
+    	test = test.remplirEtage(nb_Objets_max,nb_PNJS_max);
+    	test.GetSalle(2,2).affSalle();
+    	*/
+    	Donjon donjon = new Donjon();
+    	donjon = donjon.initDonjon();
+    	donjon.niveaux[1].grille[2][1].affSalle();
 }
 
     /**
