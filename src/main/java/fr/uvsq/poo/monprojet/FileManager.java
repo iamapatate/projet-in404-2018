@@ -8,6 +8,8 @@ public abstract class FileManager {
 	FileWriter Fwrite;
 	BufferedWriter Bw;
 	
+	// vérifie que le fichier est existant en fonction du nom du fichier en entrée
+	// retourne vrai si existant, faux sinon
 	public boolean ExistingFile(String nameoffile) {
 		f = new File(nameoffile);
 		try {
@@ -26,12 +28,14 @@ public abstract class FileManager {
 		return true;
 	}
 	
+	// fonction qui est sensée lire un étage dans un fichier
 	public Etage LoadGame(File f) {
 		Etage E = new Etage();
 		// lire fichier
 		return E;
 	}
 	
+	// fonction qui sauvegarde un étage dans un fichier
 	public void SaveGame(String nameoffile, Etage E){
 		f = new File(nameoffile);
 		if(!ExistingFile(nameoffile)) {
@@ -40,7 +44,7 @@ public abstract class FileManager {
 				Fwrite = new FileWriter(f);
 				Bw = new BufferedWriter(Fwrite);
 			}catch(IOException e){
-				System.err.println("Erreur cr�ation de fichier");
+				System.err.println("Erreur création de fichier");
 			}
 		}
 		else {
@@ -52,7 +56,7 @@ public abstract class FileManager {
 			}
 		}
 		
-		// faire les instructions pour sauvegarder un �tage
+		// faire les instructions pour sauvegarder un étage
 		// salle par salle
 		// exemple sauvegarder 1 salle
 		// type x y vie puissance liste d'objets
