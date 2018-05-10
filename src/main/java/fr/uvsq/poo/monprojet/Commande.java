@@ -80,6 +80,7 @@ public class Commande extends FileManager{
 			String nameoffile;
 			System.out.println("Quel nom donner au fichier de sauvegarde?(il doit se terminer par .txt)");
 			nameoffile=this.sc.nextLine();
+			//SaveGame(nameoffile, D)
 		}
 		else System.out.println("erreur de commande");
 		S.Update();
