@@ -1,4 +1,4 @@
-package Projet;
+package fr.uvsq.poo.monprojet;
 
 import java.io.Serializable;
 
