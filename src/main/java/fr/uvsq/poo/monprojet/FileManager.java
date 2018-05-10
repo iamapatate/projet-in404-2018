@@ -1,4 +1,5 @@
 package fr.uvsq.poo.monprojet;
+
 import java.io.*;
 
 public abstract class FileManager {
@@ -16,7 +17,7 @@ public abstract class FileManager {
 			Br = new BufferedReader(Fread);
 		}catch(FileNotFoundException e) {
 			System.err.println("Fichier de Sauvegarde inexistant");
-			return false;
+			return true;
 		}
 		try {
 			Fread.close();
@@ -24,7 +25,7 @@ public abstract class FileManager {
 		}catch(IOException e) {
 			System.err.println("Erreur IO fichier");
 		}
-		return true;
+		return false;
 	}
 	
 	public Donjon LoadGame(String nameoffile) {
@@ -42,15 +43,16 @@ public abstract class FileManager {
 		      oos.writeObject(D);
 	    System.out.println("jeu sauvegardé !");
 		 } catch (IOException e) {
-			 System.out.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
+			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
 		 } finally {
 		    try {	
 		       if (oos != null)	
 		          oos.close();	
 		    } catch (IOException e) {
-		    	System.out.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
-		       e.printStackTrace();
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		       //e.printStackTrace();
 		    }
 		 }
 	}
 }
+
