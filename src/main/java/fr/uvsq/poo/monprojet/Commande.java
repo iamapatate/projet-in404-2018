@@ -41,6 +41,16 @@ public class Commande extends FileManager{
 		return -1;
 	}
 	
+	public Donjon charger() {
+		String nameoffile;
+		do {
+		System.out.println("Quel est le nom de votre fichier de sauvegarde?");
+		nameoffile=this.sc.nextLine();
+		}while(ExistingFile(nameoffile));
+		Donjon D=LoadGame(nameoffile);
+		return D;
+	}
+	
 	
 	public void analyseCommandeJoueur(Salle S) {
 		String[] action;
@@ -70,7 +80,6 @@ public class Commande extends FileManager{
 			String nameoffile;
 			System.out.println("Quel nom donner au fichier de sauvegarde?(il doit se terminer par .txt)");
 			nameoffile=this.sc.nextLine();
-			//SaveGame(nameoffile, D)
 		}
 		else System.out.println("erreur de commande");
 		S.Update();

@@ -27,10 +27,10 @@ public abstract class FileManager {
 		return true;
 	}
 	
-	public Etage LoadGame(File f) {
-		Etage E = new Etage();
+	public Donjon LoadGame(String nameoffile) {
+		Donjon D = new Donjon();
 		// lire fichier
-		return E;
+		return D;
 	}
 	
 	public void SaveGame(String nameoffile, Donjon D){
