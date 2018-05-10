@@ -35,7 +35,7 @@ public enum Application {
            }
         else if(test==1){
         //charger une sauvegarde
-        //Donjon D=charger();
+        //Donjon D=com.charger();
         }
        
     	System.out.println("liste des commandes: ");
