@@ -1,7 +1,7 @@
 package fr.uvsq.poo.monprojet;
 import java.util.*;
 
-public class Commande {
+public class Commande extends FileManager{
 	protected Scanner sc;
 	protected String action;
 	
@@ -12,7 +12,7 @@ public class Commande {
 	
 	/*
 	 *  Retourne un tableau de mots qui composent la commande
-	 *  d'entrée du joueur, si la commande est "move up", split[0] = move, split[1] = up.
+	 *  d'entrÃ©e du joueur, si la commande est "move up", split[0] = move, split[1] = up.
 	 */
 	public String[] getAction() {
 		this.action = this.sc.nextLine();
@@ -65,6 +65,14 @@ public class Commande {
 		}
 		else if(action[0].equals("inventory")) {
 			S.joueur.CheckStatsAndInventory();
+		}
+		else if(action[0].equals("sauvegarder")) {
+			String nameoffile;
+			do {
+			System.out.println("Quel nom donner au fichier de sauvegarde?(il doit se terminer par .txt)");
+			nameoffile=this.sc.nextLine();
+			}while(ExistingFile(nameoffile));
+			//SaveGame(nameoffile, D)
 		}
 		else System.out.println("erreur de commande");
 		S.Update();
