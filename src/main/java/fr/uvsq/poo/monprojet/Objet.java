@@ -1,4 +1,4 @@
-package Projet;
+package fr.uvsq.poo.monprojet;
 
 public class Objet extends DansLaMap{
 
