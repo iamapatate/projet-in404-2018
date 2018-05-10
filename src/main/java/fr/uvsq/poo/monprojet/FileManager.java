@@ -38,7 +38,7 @@ public abstract class FileManager {
 		                new FileInputStream(
 		                  new File(nameoffile))));
 		      D=((Donjon)ois.readObject());
-	    System.out.println("jeu sauvegardé !");
+	    System.out.println("jeu chargé avec succès !");
 		 } catch (IOException e) {
 			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
 		 } catch (ClassNotFoundException e) {
