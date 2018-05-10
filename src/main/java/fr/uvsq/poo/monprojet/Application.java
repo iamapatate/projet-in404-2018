@@ -51,7 +51,7 @@ public enum Application {
        
     	System.out.println("liste des commandes: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
-    	System.out.println("pick, see, open, inventory");
+    	System.out.println("pick, see, open, inventory, sauvegarder");
     	temp.affSalleTemp();
    	for(int i = 0; i < 100; i++) {
     		com.analyseCommandeJoueur(temp);
