@@ -4,12 +4,15 @@ import java.io.Serializable;
 public class Donjon implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	Etage niveaux[] = new Etage[Variables.Nb_etages];
+	private Etage niveaux[] = new Etage[Variables.Nb_etages];
 	
 	public Donjon() {
 		for(int i=0;i<Variables.Nb_etages;i++) {
 			this.niveaux[i] = new Etage();
 		}
+	}
+	public Etage getNiveau(int numero){
+		return this.niveaux[numero];
 	}
 	
 	public Donjon initDonjon() {

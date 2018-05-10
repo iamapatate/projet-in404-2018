@@ -2,8 +2,8 @@ package fr.uvsq.poo.monprojet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Etage {
-	Salle grille[][] = new Salle[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
-	int graphe[][] = new int[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
+	private Salle grille[][] = new Salle[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
+	private int graphe[][] = new int[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
 	
 	
 	public Etage() {
@@ -17,6 +17,10 @@ public class Etage {
 				graphe[i][j] = 0;
 			}
 		}
+	}
+	
+	public Salle getGrille(int x, int y) {
+		return this.grille[x][y];
 	}
 	
 	public Etage initialisation() {

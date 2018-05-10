@@ -53,10 +53,10 @@ public enum Application {
     	System.out.println("liste des commandes: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
     	System.out.println("pick, see, open, inventory, sauvegarder");
-		donjon.niveaux[0].GetSalle(0, 0).affSalle();    	
+		donjon.getNiveau(0).GetSalle(0, 0).affSalle();    	
     	for(int i = 0; i < 100; i++) {
-    		com.analyseCommandeJoueur(donjon.niveaux[0].GetSalle(0,0));
-    		donjon.niveaux[0].GetSalle(0, 0).affSalle();
+    		com.analyseCommandeJoueur(donjon.getNiveau(0).GetSalle(0,0));
+    		donjon.getNiveau(0).GetSalle(0, 0).affSalle();
     	}
     	/*
     	Etage test = new Etage();
@@ -71,7 +71,7 @@ public enum Application {
     				System.out.println(i);
     				System.out.println(j);
     				System.out.println(k);
-    	    		donjon.niveaux[i].grille[j][k].affSalle();
+    	    		donjon.getNiveau(i).getGrille(j,k).affSalle();
     			}
     		}
     	}
