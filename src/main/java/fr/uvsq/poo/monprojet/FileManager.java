@@ -38,17 +38,17 @@ public abstract class FileManager {
 		                new FileInputStream(
 		                  new File(nameoffile))));
 		      D=((Donjon)ois.readObject());
-	    System.out.println("jeu chargÃ© avec succÃ¨s !");
+	    System.out.println("jeu chargé avec succès !");
 		 } catch (IOException e) {
-			 System.err.println("Une erreur de lecture, le jeu n'a pas pu Ãªtre chargÃ© correctement");
+			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
 		 } catch (ClassNotFoundException e) {
-			 System.err.println("Classe Donjon non trouvÃ©");
+			 System.err.println("Classe Donjon non trouvé");
 		 } finally {
 		    try {	
 		       if (ois != null)	
 		          ois.close();	
 		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
 		       //e.printStackTrace();
 		    }
 		 }
@@ -62,18 +62,17 @@ public abstract class FileManager {
 		                new FileOutputStream(
 		                  new File(nameoffile))));
 		      oos.writeObject(D);
-	    System.out.println("jeu sauvegardÃ© !");
+	    System.out.println("jeu sauvegardé !");
 		 } catch (IOException e) {
-			 System.err.println("Une erreur d'Ã©criture, le jeu n'a pas pu sauvegardÃ© correctement");
+			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
 		 } finally {
 		    try {	
 		       if (oos != null)	
 		          oos.close();	
 		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
 		       //e.printStackTrace();
 		    }
 		 }
 	}
 }
-

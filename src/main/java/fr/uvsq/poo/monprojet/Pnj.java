@@ -47,16 +47,16 @@ public class Pnj extends Joueur {
 				S.getString(this.getPosX() - 1, this.getPosY()).equals("PJ") ||
 				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")|| 
 				S.getString(this.getPosX() , this.getPosY()).equals("PJ")) {
-			if(this.getAttack() > S.joueur.getAttack()) {
-				return "gagnÃ©";
+			if(this.getAttack() > S.getJoueur().getAttack()) {
+				return "gagné";
 			}
-			else if(this.getAttack() == S.joueur.getAttack()) {
-				return "Ã©galitÃ©";
+			else if(this.getAttack() == S.getJoueur().getAttack()) {
+				return "égalité";
 			}
-			else if(this.getAttack() < S.joueur.getAttack()) {
+			else if(this.getAttack() < S.getJoueur().getAttack()) {
 				return "perdu";
 			}
-			System.out.println("j'ai vu quelqu'un mais je n'ai pas rÃ©agi");
+			System.out.println("j'ai vu quelqu'un mais je n'ai pas réagi");
 		}
 		return "RAS";
 	}

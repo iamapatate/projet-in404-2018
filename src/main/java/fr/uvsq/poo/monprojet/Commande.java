@@ -12,7 +12,7 @@ public class Commande extends FileManager{
 	
 	/*
 	 *  Retourne un tableau de mots qui composent la commande
-	 *  d'entrÃ©e du joueur, si la commande est "move up", split[0] = move, split[1] = up.
+	 *  d'entrée du joueur, si la commande est "move up", split[0] = move, split[1] = up.
 	 */
 	public String[] getAction() {
 		this.action = this.sc.nextLine();
@@ -58,13 +58,13 @@ public class Commande extends FileManager{
 		String ac;
 
 		if(action[0].equals("move")) {
-			S.joueur.Move(S,action[1]);
+			S.getJoueur().Move(S,action[1]);
 		}
 		else if(action[0].equals("turn")) {
-			S.joueur.Turn(action[1]);
+			S.getJoueur().Turn(action[1]);
 		}
 		else if(action[0].equals("see")) {
-			ac = S.WhatsInFrontOfPlayer(S.joueur);
+			ac = S.WhatsInFrontOfPlayer(S.getJoueur());
 			System.out.println(ac);
 		}
 		else if(action[0].equals("open")) {
@@ -74,12 +74,12 @@ public class Commande extends FileManager{
 			S = S.getObjetFromFloor();
 		}
 		else if(action[0].equals("inventory")) {
-			S.joueur.CheckStatsAndInventory();
+			S.getJoueur().CheckStatsAndInventory();
 		}
 		else if(action[0].equals("sauvegarder")) {
 			String nameoffile;
-			System.out.println("Quel nom donner au fichier de sauvegarde?(il doit se terminer par .txt)");
-			nameoffile=this.sc.nextLine();
+			System.out.println("Quel nom donner au fichier de sauvegarde? (il doit se terminer par .txt)");
+			nameoffile = this.sc.nextLine();
 			//SaveGame(nameoffile, D)
 		}
 		else System.out.println("erreur de commande");

@@ -6,10 +6,10 @@ public abstract class DansLaMap implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	protected int x, y;
-	String type;
+	private String type;
 	
 	/*
-	 * Constructeur pour les objets avec lesquels on peut intÃ©ragir
+	 * Constructeur pour les objets avec lesquels on peut intéragir
 	 */
 	public DansLaMap(Salle S) {
 		do {

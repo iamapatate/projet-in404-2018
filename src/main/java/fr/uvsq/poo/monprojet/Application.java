@@ -1,12 +1,20 @@
 package fr.uvsq.poo.monprojet;
 /**
+
  * Cette classe est le programme principal du projet.
+
  *
- * Elle est une implÃ©mentation du <em>design pattern</em>
+
+ * Elle est une implémentation du <em>design pattern</em>
+
  * <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">Singleton</a>.
+
  *
- * @author StÃ©phane Lopes
- * @version fÃ©v. 2018
+
+ * @author Stéphane Lopes
+
+ * @version fév. 2018
+
  */
 
 public enum Application {
@@ -15,13 +23,18 @@ public enum Application {
 
 
     /**
-     * Cette mÃ©thode est destinÃ©e Ã  initialiser et lancer l'exÃ©cution du programme.
+
+     * Cette méthode est destinée à initialiser et lancer l'exécution du programme.
+
      *
-     * @param args les paramÃ¨tres de la ligne de commande du shell
+
+     * @param args les paramètres de la ligne de commande du shell
+
      */
 
     public void run(String[] args) {
-    	/*
+    	
+    	Donjon donjon = new Donjon();       	
         Commande com = new Commande();
         int test = -1;
     	
@@ -30,38 +43,49 @@ public enum Application {
     		test = com.analyseCommandeFichier("loadgame");
     	}
         if (test==0){
-            Salle temp = new Salle();
-            temp = temp.initSalleTemp();
+        	donjon = donjon.initDonjon();
            }
         else if(test==1){
-        //charger une sauvegarde
-        //Donjon D=com.charger();
+        // charger une sauvegarde
+        donjon = com.charger();
         }
        
     	System.out.println("liste des commandes: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
     	System.out.println("pick, see, open, inventory, sauvegarder");
-    	temp.affSalleTemp();
-   	for(int i = 0; i < 100; i++) {
-    		com.analyseCommandeJoueur(temp);
-    		temp.affSalleTemp();
+		donjon.niveaux[0].GetSalle(0, 0).affSalle();    	
+    	for(int i = 0; i < 100; i++) {
+    		com.analyseCommandeJoueur(donjon.niveaux[0].GetSalle(0,0));
+    		donjon.niveaux[0].GetSalle(0, 0).affSalle();
     	}
-    }
+    	/*
     	Etage test = new Etage();
     	test = test.initialisation();
     	test = test.generation();
     	test = test.remplirEtage(nb_Objets_max,nb_PNJS_max);
     	test.GetSalle(2,2).affSalle();
     	*/
-    	Donjon donjon = new Donjon();
-    	donjon = donjon.initDonjon();
-    	donjon.niveaux[1].grille[2][1].affSalle();
+    	for(int i = 0; i < Variables.Nb_etages; i++) {
+    		for(int j = 0; j < Variables.Nb_largeur_salles; j++) {
+    			for(int k = 0; k < Variables.Nb_hauteur_salles; k++) {
+    				System.out.println(i);
+    				System.out.println(j);
+    				System.out.println(k);
+    	    		donjon.niveaux[i].grille[j][k].affSalle();
+    			}
+    		}
+    	}
+    	
 }
 
     /**
-     * La mÃ©thode de classe <em>main</em> se contente de dÃ©lÃ©guer le lancement du programme Ã  la mÃ©thode <em>run</em>.
+
+     * La méthode de classe <em>main</em> se contente de déléguer le lancement du programme à la méthode <em>run</em>.
+
      *
-     * @param args les paramÃ¨tres de la ligne de commande du shell
+
+     * @param args les paramètres de la ligne de commande du shell
+
      */
 
     public static void main(String[] args) {
