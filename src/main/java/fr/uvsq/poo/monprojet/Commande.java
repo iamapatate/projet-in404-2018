@@ -68,10 +68,8 @@ public class Commande extends FileManager{
 		}
 		else if(action[0].equals("sauvegarder")) {
 			String nameoffile;
-			do {
 			System.out.println("Quel nom donner au fichier de sauvegarde?(il doit se terminer par .txt)");
 			nameoffile=this.sc.nextLine();
-			}while(ExistingFile(nameoffile));
 			//SaveGame(nameoffile, D)
 		}
 		else System.out.println("erreur de commande");
