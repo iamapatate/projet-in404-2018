@@ -83,12 +83,13 @@ public class Salle {
 
 	public void affSalle() {
 		int a= 9619;
-		for(int j = 0; j < Variables.hauteur_salle; j++) {
+		for(int j = Variables.hauteur_salle-1; j >= 0; j--) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
 				if(this.grille_string[i][j] == "mur") System.out.print((char)a);
 				else if(this.grille_string[i][j] == "sol") System.out.print(".");
 				else if(this.grille_string[i][j] == "PJ") System.out.print("+");
 				else if(this.grille_string[i][j] == "porte") System.out.print("O");
+				else if(this.grille_string[i][j] == "trappe") System.out.print("O");
 				else if(this.grille_string[i][j] == "cle") System.out.print("C");
 				else if(this.grille_string[i][j] == "lime") System.out.print("L");
 				else if(this.grille_string[i][j] == "surin") System.out.print("S");
