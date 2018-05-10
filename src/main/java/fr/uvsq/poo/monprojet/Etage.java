@@ -1,13 +1,10 @@
 package fr.uvsq.poo.monprojet;
-
 import java.util.concurrent.ThreadLocalRandom;
-import java.io.Serializable;
 
-public class Etage implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class Etage {
 	Salle grille[][] = new Salle[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
 	int graphe[][] = new int[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
+	
 	
 	public Etage() {
 		for(int i=0;i<Variables.Nb_largeur_salles;i++) {
@@ -41,14 +38,14 @@ public class Etage implements Serializable{
 		x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 		y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
 		graphe[x][y] = 1;
-		// On parcourt tous les sommets au moins une fois
-		boolean stop = false;
-		while(stop == false){
+		// On parcourt tout le graphe
+		int nb_som_visit = 0;
+		while(nb_som_visit<Variables.Nb_hauteur_salles*Variables.Nb_largeur_salles){
 			// On choisit un sommet marque au hasard
-			while(graphe[x][y] != 1){
+			do{
 				x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 				y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
-			}
+			}while(graphe[x][y] != 1);
 			// On verifie si au moins un voisin est non marque
 			boolean test = false;
 			for(int k=0;k<4;k++){
@@ -116,13 +113,7 @@ public class Etage implements Serializable{
 						break;
 				}
 			}
-			int som_visit = 0;
-			for(int i=0;i<Variables.Nb_largeur_salles;i++) {
-				for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
-					if(graphe[i][j] != 0) som_visit++;
-				}
-			}
-			if(som_visit == Variables.Nb_largeur_salles*Variables.Nb_hauteur_salles) stop = true;
+			nb_som_visit++;
 		}
 		return this;
 	}
@@ -131,25 +122,36 @@ public class Etage implements Serializable{
 		//On remplit chaque salle d'objets au hasard
 		for(int i=0;i<Variables.Nb_largeur_salles;i++) {
 			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
-				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
+				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),
+						ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
 			}
 		}
 		//On place une cle au hasard dans tout l'etage
 		int x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 		int y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
 		Objet nouv = new Objet("cle",this.grille[x][y]);
-		this.grille[x][y].objetsdelamap.add(nouv);
-		this.grille[x][y].grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
-		//On place aussi la trappe au hasard
-		x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
-		y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
-		int i = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
-		int j = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
-		this.grille[x][y].grille_string[i][j] = "trappe";
+		this.grille[x][y] = this.grille[x][y].addObjet(nouv);
+		this.grille[x][y] = this.grille[x][y].modifGrilleString(nouv);
 		return this;
 	}
 
 	public Salle GetSalle(int x,int y) {
 		return this.grille[x][y];
+	}
+	
+	public Salle ChangeRoom(int Cardinal, int salleX, int salleY) {
+		if(Cardinal == 0) {
+			return grille[salleX][salleY + 1];
+		}
+		else if(Cardinal == 1) {
+			return grille[salleX + 1][salleY];
+		}
+		else if(Cardinal == 2) {
+			return grille[salleX][salleY - 1];
+		}
+		else if(Cardinal == 3) {
+			return grille[salleX - 1][salleY];
+		}
+		return grille[salleX][salleY];
 	}
 }

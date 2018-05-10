@@ -7,7 +7,7 @@ public class Salle implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String grille_string[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
-	private int Portes[] = new int[4]; // [0] = Nord, [1] = Est, [2] = Sud, [3] = West // 0 = faux, 1 = vrai, 2 = bloqué
+	int Portes[] = new int[4]; // [0] = Nord, [1] = Est, [2] = Sud, [3] = West // 0 = faux, 1 = vrai, 2 = bloqué
 	private ArrayList<Objet> objetsdelamap = new ArrayList<Objet>();
 	private ArrayList<Pnj> pnjs = new ArrayList<Pnj>();
 	private Pj joueur;
@@ -36,6 +36,10 @@ public class Salle implements Serializable{
 	
 	public Pj getJoueur() {
 		return this.joueur;
+	}
+	
+	public int getValueofPorte(int indice) {
+		return this.Portes[indice];
 	}
 
 	private Salle initPnjs(int nb_PNJs) {
@@ -84,6 +88,16 @@ public class Salle implements Serializable{
 		this.initDoors();
 		this.initObjects(nb_objects);
 		this.initPnjs(nb_PNJs);
+		return this;
+	}
+	
+	public Salle addObjet(Objet nouv) {
+		this.objetsdelamap.add(nouv);
+		return this;
+	}
+	
+	public Salle modifGrilleString(Objet nouv) {
+		this.grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		return this;
 	}
 
