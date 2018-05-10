@@ -20,7 +20,7 @@ public class Pj extends Joueur {
 	}
 	
 	public ArrayList<Objet> PickUp(Objet Obj){
-		if(IsInInventory(Obj.getType()) == 0) {
+		if(!this.inventaire.contains(Obj)) {
 			this.inventaire.add(Obj);
 			if(Obj.getType().equals("lime")) {
 				this.puissance += 5;
@@ -32,7 +32,7 @@ public class Pj extends Joueur {
 				this.puissance += 30;
 			}
 		}
-		else System.out.println("Qu'allez vous faire avec deux " + Obj.getType() + " ?");
+		else System.out.println("Qu'allez vous faire avec deux " + Obj.getType() + "s" + " ?");
 		return this.inventaire; 
 	}
 	

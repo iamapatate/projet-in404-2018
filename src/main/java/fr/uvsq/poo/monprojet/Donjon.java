@@ -18,7 +18,7 @@ public class Donjon implements Serializable{
 	public Donjon initDonjon() {
 		int nb_Objets_max = 2;
 		int nb_PNJs_max = 2;
-		for(int i=0;i<Variables.Nb_etages;i++) {
+		for(int i = 0; i < Variables.Nb_etages; i++) {
 			this.niveaux[i] = new Etage();
 			this.niveaux[i].initialisation();
 			this.niveaux[i].generation();
@@ -26,6 +26,7 @@ public class Donjon implements Serializable{
 			nb_Objets_max++;
 			nb_PNJs_max++;
 		}
+		this.niveaux[0].GetSalle(0,0).modifJoueur(new Pj(this.niveaux[0].GetSalle(0,0)));			
 		return this;
 	}
 }

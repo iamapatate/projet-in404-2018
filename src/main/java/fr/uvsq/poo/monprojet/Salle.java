@@ -100,6 +100,11 @@ public class Salle implements Serializable{
 		this.grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
 		return this;
 	}
+	
+	public void modifJoueur(Pj joueur) {
+		this.joueur = joueur;
+		this.grille_string[joueur.getPosX()][joueur.getPosY()] = "PJ";
+	}
 
 	public void affSalle() {
 		int a= 9619;
@@ -109,7 +114,7 @@ public class Salle implements Serializable{
 				else if(this.grille_string[i][j] == "sol") System.out.print(".");
 				else if(this.grille_string[i][j] == "PJ") System.out.print("+");
 				else if(this.grille_string[i][j] == "porte") System.out.print("O");
-				else if(this.grille_string[i][j] == "trappe") System.out.print("O");
+				else if(this.grille_string[i][j] == "trappe") System.out.print("T");
 				else if(this.grille_string[i][j] == "cle") System.out.print("C");
 				else if(this.grille_string[i][j] == "lime") System.out.print("L");
 				else if(this.grille_string[i][j] == "surin") System.out.print("S");
@@ -153,7 +158,8 @@ public class Salle implements Serializable{
 		this.grille_string[this.joueur.getPosX()][this.joueur.getPosY()] = "PJ";
 		for(int i = 0; i < pnjs.size(); i++) {
 			this.grille_string[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = this.pnjs.get(i).getString();
-		}		
+		}
+		this.affSalle();
 		return this;
 	}
 
@@ -166,12 +172,12 @@ public class Salle implements Serializable{
 	public String WhatsInFrontOfPlayer(Joueur J) {
 
 		String dirplayer = J.getDir();
-		if(dirplayer.equals("up")) {
+		if(dirplayer.equals("down")) {
 			if(J.getPosY() > 0)
 			return getString(J.getPosX(), J.getPosY() - 1);
 		}
 
-		else if(dirplayer.equals("down")) {
+		else if(dirplayer.equals("up")) {
 			if(J.getPosY() < Variables.hauteur_salle - 1)
 			return getString(J.getPosX(), J.getPosY() + 1);
 		}
@@ -192,12 +198,12 @@ public class Salle implements Serializable{
 	private String DevantJoueur(Joueur J) {
 		if(J.getPosY() > 0)
 			return getString(J.getPosX(), J.getPosY() - 1);
-		return "trop haut";
+		return "trop bas";
 	}
 	private String DerriereJoueur(Joueur J) {
 		if(J.getPosY() < Variables.hauteur_salle - 1)
 			return getString(J.getPosX(), J.getPosY() + 1);
-		return "trop bas";
+		return "trop haut";
 	}
 	private String ADroiteJoueur(Joueur J) {
 		if(J.getPosX() < Variables.largeur_salle - 1)

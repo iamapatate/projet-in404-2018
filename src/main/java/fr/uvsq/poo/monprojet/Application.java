@@ -56,7 +56,6 @@ public enum Application {
 		donjon.getNiveau(0).GetSalle(0, 0).affSalle();    	
     	for(int i = 0; i < 100; i++) {
     		com.analyseCommandeJoueur(donjon.getNiveau(0).GetSalle(0,0));
-    		donjon.getNiveau(0).GetSalle(0, 0).affSalle();
     	}
     	/*
     	Etage test = new Etage();
