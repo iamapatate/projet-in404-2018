@@ -1,4 +1,4 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
 import java.io.*;
 
 public abstract class FileManager {
@@ -7,6 +7,7 @@ public abstract class FileManager {
 	BufferedReader Br;
 	FileWriter Fwrite;
 	BufferedWriter Bw;
+	ObjectOutputStream oos;
 	
 	public boolean ExistingFile(String nameoffile) {
 		f = new File(nameoffile);
@@ -32,40 +33,24 @@ public abstract class FileManager {
 		return E;
 	}
 	
-	public void SaveGame(String nameoffile, Etage E){
-		f = new File(nameoffile);
-		if(!ExistingFile(nameoffile)) {
-			try{
-				f.createNewFile();
-				Fwrite = new FileWriter(f);
-				Bw = new BufferedWriter(Fwrite);
-			}catch(IOException e){
-				System.err.println("Erreur cr�ation de fichier");
-			}
-		}
-		else {
-			try {
-				Fwrite = new FileWriter(f);
-				Bw = new BufferedWriter(Fwrite);
-			}catch(IOException e) {
-				System.err.println(e.getMessage());
-			}
-		}
-		
-		// faire les instructions pour sauvegarder un �tage
-		// salle par salle
-		// exemple sauvegarder 1 salle
-		// type x y vie puissance liste d'objets
-		// PJ   4 5 3   50        surin lime 
-		// PNJ  3 3     35        cle		
-		// si objet
-		// Objet type x y
-		// Objet cle  5 6
-		// exemple complet
-		// PJ 4 5 3 50 surin lime cle
-		// PNJ 3 4 30 cle
-		// PNJ 3 3 10 pistol
-		// Objet cle 4 4
-		// Objet pistol 5 7
+	public void SaveGame(String nameoffile, Donjon D){
+		try {
+		      oos = new ObjectOutputStream(
+		              new BufferedOutputStream(
+		                new FileOutputStream(
+		                  new File(nameoffile))));
+		      oos.writeObject(D);
+	    System.out.println("jeu sauvegardé !");
+		 } catch (IOException e) {
+			 System.out.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
+		 } finally {
+		    try {	
+		       if (oos != null)	
+		          oos.close();	
+		    } catch (IOException e) {
+		    	System.out.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		       e.printStackTrace();
+		    }
+		 }
 	}
 }

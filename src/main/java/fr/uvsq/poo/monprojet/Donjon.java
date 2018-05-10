@@ -1,6 +1,9 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
+import java.io.Serializable;
 
-public class Donjon {
+public class Donjon implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	Etage niveaux[] = new Etage[Variables.Nb_etages];
 	
 	public Donjon() {

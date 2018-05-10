@@ -1,9 +1,11 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Salle {
+public class Salle implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	String grille_string[][] = new String[Variables.largeur_salle][Variables.hauteur_salle];
 	int Portes[] = new int[4]; // [0] = Nord, [1] = Est, [2] = Sud, [3] = West // 0 = faux, 1 = vrai, 2 = bloqué
 	ArrayList<Objet> objetsdelamap = new ArrayList<Objet>();

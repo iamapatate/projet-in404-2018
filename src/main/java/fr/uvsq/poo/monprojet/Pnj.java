@@ -1,7 +1,10 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
+
 import java.util.*;
 
 public class Pnj extends Joueur {
+
+	private static final long serialVersionUID = 1L;
 
 	public Pnj(Salle S) {
 		super(S);
@@ -45,15 +48,15 @@ public class Pnj extends Joueur {
 				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")|| 
 				S.getString(this.getPosX() , this.getPosY()).equals("PJ")) {
 			if(this.getAttack() > S.joueur.getAttack()) {
-				return "gagné";
+				return "gagnÃ©";
 			}
 			else if(this.getAttack() == S.joueur.getAttack()) {
-				return "égalité";
+				return "Ã©galitÃ©";
 			}
 			else if(this.getAttack() < S.joueur.getAttack()) {
 				return "perdu";
 			}
-			System.out.println("j'ai vu quelqu'un mais je n'ai pas réagi");
+			System.out.println("j'ai vu quelqu'un mais je n'ai pas rÃ©agi");
 		}
 		return "RAS";
 	}

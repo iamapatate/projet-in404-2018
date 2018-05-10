@@ -1,11 +1,15 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
 
-public abstract class DansLaMap {
+import java.io.Serializable;
+
+public abstract class DansLaMap implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	protected int x, y;
 	String type;
 	
 	/*
-	 * Constructeur pour les objets avec lesquels on peut intéragir
+	 * Constructeur pour les objets avec lesquels on peut intÃ©ragir
 	 */
 	public DansLaMap(Salle S) {
 		do {

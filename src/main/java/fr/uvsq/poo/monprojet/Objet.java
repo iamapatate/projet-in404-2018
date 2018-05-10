@@ -1,6 +1,8 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
 
 public class Objet extends DansLaMap{
+
+	private static final long serialVersionUID = 1L;
 	private String type;
 	
 	public Objet(String type, Salle S) {

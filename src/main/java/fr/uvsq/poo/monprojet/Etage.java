@@ -1,7 +1,11 @@
-package fr.uvsq.poo.monprojet;
-import java.util.concurrent.ThreadLocalRandom;
+package Projet;
 
-public class Etage {
+import java.util.concurrent.ThreadLocalRandom;
+import java.io.Serializable;
+
+public class Etage implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	Salle grille[][] = new Salle[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
 	int graphe[][] = new int[Variables.Nb_largeur_salles][Variables.Nb_hauteur_salles];
 	

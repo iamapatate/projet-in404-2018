@@ -1,7 +1,10 @@
-package fr.uvsq.poo.monprojet;
-import java.util.*;
+package Projet;
 
-public abstract class Joueur extends DansLaMap{
+import java.util.*;
+import java.io.Serializable;
+
+public abstract class Joueur extends DansLaMap implements Serializable{
+	private static final long serialVersionUID = 1L;
 	protected String dir;
 	protected int puissance;
 	protected ArrayList<Objet> inventaire;

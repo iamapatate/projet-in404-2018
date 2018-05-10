@@ -1,8 +1,10 @@
-package fr.uvsq.poo.monprojet;
+package Projet;
 
 import java.util.ArrayList;
 
 public class Pj extends Joueur {
+
+	private static final long serialVersionUID = 1L;
 	protected int vie;
 
 	public Pj(Salle S) {
