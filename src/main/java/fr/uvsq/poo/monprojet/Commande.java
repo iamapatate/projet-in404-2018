@@ -52,10 +52,11 @@ public class Commande extends FileManager{
 	}
 	
 	
-	public void analyseCommandeJoueur(Salle S) {
+	public int analyseCommandeJoueur(Salle S, Donjon D) {
 		String[] action;
 		action = getAction();
 		String ac;
+		int updateroom = -1; // permet de dire à Application quand changer de salle
 
 		if(action[0].equals("move")) {
 			S.getJoueur().Move(S,action[1]);
@@ -68,7 +69,7 @@ public class Commande extends FileManager{
 			System.out.println(ac);
 		}
 		else if(action[0].equals("open")) {
-			S = S.ChangeRoom();
+			updateroom = S.ChangeRoom();
 		}
 		else if(action[0].equals("take")) {
 			S = S.getObjetFromFloor();
@@ -80,9 +81,10 @@ public class Commande extends FileManager{
 			String nameoffile;
 			System.out.println("Quel nom donner au fichier de sauvegarde? (il doit se terminer par .txt)");
 			nameoffile = this.sc.nextLine();
-			//SaveGame(nameoffile, D)
+			SaveGame(nameoffile, D);
 		}
 		else System.out.println("erreur de commande");
 		S.Update();
+		return updateroom;
 	}
 }

@@ -20,12 +20,16 @@ public abstract class Joueur extends DansLaMap implements Serializable{
 		return this.dir;
 	}
 	
+	public String getString() {
+		return this.type;
+	}
+	
 	/*
 	 *  Commandes en anglais
 	 */
 	public Joueur Move(Salle S, String dir) {
-		if(dir.equals("down") && this.getPosY() < Variables.hauteur_salle - 2 && S.getString(this.getPosX(),this.getPosY() + 1).equals("sol")) this.y += 1;
-		else if(dir.equals("up") && this.getPosY() > 1 && S.getString(this.getPosX(),this.getPosY() - 1).equals("sol")) this.y -= 1;
+		if(dir.equals("up") && this.getPosY() < Variables.hauteur_salle - 2 && S.getString(this.getPosX(),this.getPosY() + 1).equals("sol")) this.y += 1;
+		else if(dir.equals("down") && this.getPosY() > 1 && S.getString(this.getPosX(),this.getPosY() - 1).equals("sol")) this.y -= 1;
 		else if(dir.equals("left") && this.getPosX() > 1 && S.getString(this.getPosX()-1,this.getPosY()).equals("sol")) this.x -= 1;
 		else if(dir.equals("right") && this.getPosX() < Variables.largeur_salle - 1 && S.getString(this.getPosX()+1, this.getPosY()).equals("sol")) this.x += 1;
 		this.dir = dir;

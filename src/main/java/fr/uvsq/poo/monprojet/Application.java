@@ -36,7 +36,8 @@ public enum Application {
     	
     	Donjon donjon = new Donjon();       	
         Commande com = new Commande();
-        int test = -1;
+        int test = -1; int ChangingPlaces = 0;
+        int salleX = 0; int salleY = 0; int NumEtage = 0;
     	
     	System.out.println("Load Game? y/n");
     	while(test == -1) {
@@ -49,21 +50,36 @@ public enum Application {
         // charger une sauvegarde
         donjon = com.charger();
         }
-       
-    	System.out.println("liste des commandes: ");
+		System.out.println("Votre objectif est de trouver la clé de chaque étage \nafin de remonter le donjon par des trappes, bonne chance!");       
+    	System.out.println("Voici la liste des commandes mise à votre disposition: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
     	System.out.println("pick, see, open, inventory, sauvegarder");
-		donjon.getNiveau(0).GetSalle(0, 0).affSalle();    	
-    	for(int i = 0; i < 100; i++) {
-    		com.analyseCommandeJoueur(donjon.getNiveau(0).GetSalle(0,0));
+		donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).affSalle();    	
+    	while(ChangingPlaces != 4 && NumEtage != Variables.Nb_etages) {
+    		System.out.println("Vous êtes en Salle " + salleX + " " + salleY + " à l'étage: " + NumEtage);
+    		ChangingPlaces = com.analyseCommandeJoueur(donjon.getNiveau(NumEtage).GetSalle(salleX,salleY), donjon);
+    		
+    		if(ChangingPlaces == 0) { // haut
+    			salleY++;
+    		}
+    		else if(ChangingPlaces == 1) {// droite
+    			salleX++;
+    		}
+    		else if(ChangingPlaces == 2) {// bas
+    			salleY--;
+    		}
+    		else if(ChangingPlaces == 3) {// gauche
+    			salleX--;
+    		}
+    		else if(ChangingPlaces == 4) {
+    			NumEtage++;
+    			salleX = 0;
+    			salleY = 0;
+    		}
     	}
+    	
+    	
     	/*
-    	Etage test = new Etage();
-    	test = test.initialisation();
-    	test = test.generation();
-    	test = test.remplirEtage(nb_Objets_max,nb_PNJS_max);
-    	test.GetSalle(2,2).affSalle();
-    	*/
     	for(int i = 0; i < Variables.Nb_etages; i++) {
     		for(int j = 0; j < Variables.Nb_largeur_salles; j++) {
     			for(int k = 0; k < Variables.Nb_hauteur_salles; k++) {
@@ -74,7 +90,7 @@ public enum Application {
     			}
     		}
     	}
-    	
+    	*/
 }
 
     /**

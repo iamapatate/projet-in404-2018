@@ -127,7 +127,7 @@ public class Etage {
 		for(int i=0;i<Variables.Nb_largeur_salles;i++) {
 			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
 				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),
-						ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
+					ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
 			}
 		}
 		//On place une cle au hasard dans tout l'etage

@@ -110,23 +110,22 @@ public class Salle implements Serializable{
 		int a= 9619;
 		for(int j = Variables.hauteur_salle-1; j >= 0; j--) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
-				if(this.grille_string[i][j] == "mur") System.out.print((char)a);
-				else if(this.grille_string[i][j] == "sol") System.out.print(".");
-				else if(this.grille_string[i][j] == "PJ") System.out.print("+");
-				else if(this.grille_string[i][j] == "porte") System.out.print("O");
-				else if(this.grille_string[i][j] == "trappe") System.out.print("T");
-				else if(this.grille_string[i][j] == "cle") System.out.print("C");
-				else if(this.grille_string[i][j] == "lime") System.out.print("L");
-				else if(this.grille_string[i][j] == "surin") System.out.print("S");
-				else if(this.grille_string[i][j] == "pistol") System.out.print("P");
-				else if(this.grille_string[i][j] == "PNJ") System.out.print("@");
+				if(this.grille_string[i][j].equals("mur")) System.out.print((char)a);
+				else if(this.grille_string[i][j].equals("sol")) System.out.print(".");
+				else if(this.grille_string[i][j].equals("PJ")) System.out.print("+");
+				else if(this.grille_string[i][j].equals("porte")) System.out.print("O");
+				else if(this.grille_string[i][j].equals("trappe")) System.out.print("O");
+				else if(this.grille_string[i][j].equals("cle")) System.out.print("C");
+				else if(this.grille_string[i][j].equals("lime")) System.out.print("L");
+				else if(this.grille_string[i][j].equals("surin")) System.out.print("S");
+				else if(this.grille_string[i][j].equals("pistol")) System.out.print("P");
+				else if(this.grille_string[i][j].equals("PNJ")) System.out.print("@");
 			}
 			System.out.println("");
 		}
 	}
 
 	public Salle Update() {
-		
 		// tous les pnjs recherchent le joueur
 		for(int i = 0; i < this.pnjs.size(); i++) {
 			this.PnjLookingForFight(this.pnjs.get(i));
@@ -255,9 +254,12 @@ public class Salle implements Serializable{
 			else if(p.LookingForFight(this).equals("perdu")) {
 				if(!p.getInventory().isEmpty()) {
 					Objet nouv = new Objet(this, p.getPosX(), p.getPosY(), p.getInventory().get(0).getType());
-					this.objetsdelamap.add(nouv);					
+					this.objetsdelamap.add(nouv);
+					System.out.println("Vous gagnez le combat, oh! Le pnj a fait tomber " + p.getInventory().get(0).getType());
 				}
-				System.out.println("Vous gagnez le combat, oh! Le pnj a fait tomber " + p.getInventory().get(0).getType());
+				else {
+					System.out.println("Vous gagnez le combat!");	
+				}
 				int indice = this.pnjs.indexOf(p);
 				this.pnjs.remove(this.pnjs.get(indice));
 			}
@@ -277,14 +279,30 @@ public class Salle implements Serializable{
 		return this;
 	}
 	
-	public Salle ChangeRoom() {
-		if(this.joueur.IsInInventory("cle") == 1) {
-			System.out.println("Porte ouverte, passage à une nouvelle salle");
-			Salle nouv = new Salle();
-			nouv.joueur = this.joueur;
-			return nouv;
+	// retourne l'int correspondant au cardinal vers lequel le joueur tente d'ouvrir une porte
+	public int ChangeRoom() {
+		if(ADroiteJoueur(this.joueur).equals("porte")) {
+			System.out.println("Changement de salle");
+			return 1;
 		}
-		else System.out.println("Trouvez la clé du niveau pour passer à la salle suivante");
-		return this;
+		else if(DevantJoueur(this.joueur).equals("porte")) {
+			System.out.println("Changement de salle");
+			return 2;
+		}
+		else if(DerriereJoueur(this.joueur).equals("porte")) {
+			System.out.println("Changement de salle");
+			return 0;
+		}
+		else if(AGaucheJoueur(this.joueur).equals("porte")) {
+			System.out.println("Changement de salle");
+			return 3;
+		}
+		else if(ADroiteJoueur(this.joueur).equals("trappe") || AGaucheJoueur(this.joueur).equals("trappe")
+				|| DevantJoueur(this.joueur).equals("trappe") || DerriereJoueur(this.joueur).equals("trappe")) {
+			System.out.println("Changement d'étage");
+			return 4;
+		}
+		
+		return -1;
 	}
 }
