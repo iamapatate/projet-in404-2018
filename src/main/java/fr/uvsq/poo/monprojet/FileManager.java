@@ -9,6 +9,7 @@ public abstract class FileManager {
 	FileWriter Fwrite;
 	BufferedWriter Bw;
 	ObjectOutputStream oos;
+	ObjectInputStream ois;
 	
 	public boolean ExistingFile(String nameoffile) {
 		f = new File(nameoffile);
@@ -31,6 +32,26 @@ public abstract class FileManager {
 	public Donjon LoadGame(String nameoffile) {
 		Donjon D = new Donjon();
 		// lire fichier
+		try {
+			ois = new ObjectInputStream(
+		              new BufferedInputStream(
+		                new FileInputStream(
+		                  new File(nameoffile))));
+		      D=((Donjon)ois.readObject());
+	    System.out.println("jeu sauvegardé !");
+		 } catch (IOException e) {
+			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
+		 } catch (ClassNotFoundException e) {
+			 System.err.println("Classe Donjon non trouvé");
+		 } finally {
+		    try {	
+		       if (ois != null)	
+		          ois.close();	
+		    } catch (IOException e) {
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		       //e.printStackTrace();
+		    }
+		 }
 		return D;
 	}
 	
