@@ -1,4 +1,5 @@
 package fr.uvsq.poo.monprojet;
+
 import java.io.*;
 
 public abstract class FileManager {
@@ -39,7 +40,7 @@ public abstract class FileManager {
 			for(int k = 0; k < Variables.Nb_etages; k++) {
 		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
 		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
-		  				D.getNiveau(k).setGrille(i,j,((Salle)ois.readObject()));
+		  				D.getNiveau(k).SetGrille(i,j,((Salle)ois.readObject()));
 		  			}
 		    	  }
 		      }
@@ -69,7 +70,7 @@ public abstract class FileManager {
 		      for(int k = 0; k < Variables.Nb_etages; k++) {
 		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
 		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
-		  					oos.writeObject(D.getNiveau(k).getGrille(i,j));
+		  					oos.writeObject(D.getNiveau(k).GetSalle(i,j));
 		  			}
 		    	  }
 		      }
