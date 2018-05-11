@@ -92,7 +92,7 @@ public class Donjon implements Serializable{
     		}
     		else {
     			System.out.println("Vous avez failli");
-    			break;
+    			System.exit(0);
     		}
         }
         if(change.getVie()!= 0)System.out.println("C'est gagné! Vous êtes sortis de la prison sain et sauf!");
