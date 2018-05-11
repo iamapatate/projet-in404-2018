@@ -127,24 +127,28 @@ public class Etage {
 		}
 		return this;
 	}
-	
 	public Etage remplirEtage(int nb_Objets_max,int nb_PNJs_max) {
 		//On remplit chaque salle d'objets au hasard
 		for(int i=0;i<Variables.Nb_largeur_salles;i++) {
 			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
-				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),
-					ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
+				this.grille[i][j].remplirSalle(ThreadLocalRandom.current().nextInt(1,nb_Objets_max+1),ThreadLocalRandom.current().nextInt(1,nb_PNJs_max+1));
 			}
 		}
 		//On place une cle au hasard dans tout l'etage
 		int x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 		int y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
 		Objet nouv = new Objet("cle",this.grille[x][y]);
-		this.grille[x][y] = this.grille[x][y].addObjet(nouv);
-		this.grille[x][y] = this.grille[x][y].modifGrilleString(nouv);
+		this.grille[x][y].objetsdelamap.add(nouv);
+		this.grille[x][y].grille_string[nouv.getPosX()][nouv.getPosY()] = nouv.getType();
+		//On place aussi la trappe au hasard
+		x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
+		y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
+		int i = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
+		int j = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
+		this.grille[x][y].grille_string[i][j] = "trappe";
 		return this;
 	}
-
+	
 	public Salle GetSalle(int x,int y) {
 		return this.grille[x][y];
 	}
