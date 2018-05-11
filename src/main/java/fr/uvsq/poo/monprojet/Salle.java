@@ -248,12 +248,12 @@ public class Salle implements Serializable{
 				return this;
 			}
 			else if(p.LookingForFight(this).equals("gagné")) {
-				System.out.println("Un Pnj vous attaque");
+				System.out.println("Un Pnj vous attaque...");
 				this.joueur.LoseLife();				
 				System.out.println("Le Pnj gagne le combat");
 			}
 			else if(p.LookingForFight(this).equals("perdu")) {
-				System.out.println("Un Pnj vous attaque");
+				System.out.println("Un Pnj vous attaque...");
 				if(!p.getInventory().isEmpty()) {
 					Objet nouv = new Objet(this, p.getPosX(), p.getPosY(), p.getInventory().get(0).getType());
 					this.objetsdelamap.add(nouv);
@@ -266,7 +266,7 @@ public class Salle implements Serializable{
 				this.pnjs.remove(this.pnjs.get(indice));
 			}
 			else if(p.LookingForFight(this).equals("égalité")){
-				System.out.println("Un Pnj vous attaque");
+				System.out.println("Un Pnj vous attaque...");
 				if(!p.getInventory().isEmpty()) {
 					Objet nouv = new Objet(this, p.getPosX(), p.getPosY(), p.getInventory().get(0).getType());
 					this.objetsdelamap.add(nouv);
