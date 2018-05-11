@@ -31,7 +31,7 @@ public class Donjon implements Serializable{
 	}
 	
 	public void PlayTheGame(Commande com) {
-		int ChangingPlaces = 0;
+		int ChangingPlaces = 0; Pj change = new Pj(new Salle());
         int salleX = 0; int salleY = 0; int NumEtage = 0;
 		getNiveau(NumEtage).GetSalle(salleX, salleY).affSalle();    	
         while(ChangingPlaces != 4 && NumEtage != Variables.Nb_etages) {
@@ -39,7 +39,7 @@ public class Donjon implements Serializable{
     		if(getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur().getVie() != 0) {
     			ChangingPlaces = com.analyseCommandeJoueur(getNiveau(NumEtage).GetSalle(salleX,salleY), this);	
     			if(ChangingPlaces != -1) {
-    				Pj change = getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur();
+    				change = getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur();
     				if(ChangingPlaces == 0) {// haut
     					salleY++;
     					change.EntreSud();
@@ -71,6 +71,6 @@ public class Donjon implements Serializable{
     			break;
     		}
         }
-        System.out.println("C'est gagné! Vous êtes sortis de la prison sain et sauf!");
+        if(change.getVie()!= 0)System.out.println("C'est gagné! Vous êtes sortis de la prison sain et sauf!");
 	}
 }
