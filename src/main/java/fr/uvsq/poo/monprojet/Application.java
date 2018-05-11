@@ -54,7 +54,7 @@ public enum Application {
     				System.out.println(i);
     				System.out.println(j);
     				System.out.println(k);
-    	    		donjon.getNiveau(i).getGrille(j,k).affSalle();
+    	    		donjon.getNiveau(i).GetSalle(j,k).affSalle();
     			}
     		}
     	}
