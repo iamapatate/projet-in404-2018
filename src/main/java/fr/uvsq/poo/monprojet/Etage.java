@@ -20,10 +20,11 @@ public class Etage {
 		}
 	}
 	
-	public Salle getGrille(int x, int y) {
+	public Salle GetSalle(int x,int y) {
 		return this.grille[x][y];
 	}
-	public void setGrille(int x, int y, Salle Sa)
+
+	public void SetGrille(int x, int y, Salle Sa)
 	  {
 		this.grille[x][y] = Sa;
 	  }
@@ -142,10 +143,6 @@ public class Etage {
 		this.grille[x][y] = this.grille[x][y].addObjet(nouv);
 		this.grille[x][y] = this.grille[x][y].modifGrilleString(nouv);
 		return this;
-	}
-
-	public Salle GetSalle(int x,int y) {
-		return this.grille[x][y];
 	}
 	
 	
