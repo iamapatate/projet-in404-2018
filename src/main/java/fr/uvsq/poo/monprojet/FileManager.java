@@ -44,17 +44,20 @@ public abstract class FileManager {
 		  			}
 		    	  }
 		      }
-	    System.out.println("jeu chargé avec succès !");
+			D.SetSallex(ois.readInt());
+			D.SetSalley(ois.readInt());
+			D.SetNumEtage(ois.readInt());
+	    System.out.println("jeu chargÃ© avec succÃ¨s !");
  		 } catch (IOException e) {
-			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
+			 System.err.println("Une erreur de lecture, le jeu n'a pas pu Ãªtre chargÃ© correctement");
  		 } catch (ClassNotFoundException e) {
-			 System.err.println("problème rencontré dans l'écriture de la classe salle");
+			 System.err.println("problÃ¨me rencontrÃ© dans l'Ã©criture de la classe salle");
  		 } finally {
  		    try {	
  		       if (ois != null)	
  		          ois.close();	
  		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
  		       //e.printStackTrace();
  		    }
  		 }
@@ -74,15 +77,18 @@ public abstract class FileManager {
 		  			}
 		    	  }
 		      }
-		      System.out.println("jeu sauvegardé !");
+		      oos.writeInt(D.GetSallex());
+		      oos.writeInt(D.GetSalley());
+		      oos.writeInt(D.GetNumEtage());
+		      System.out.println("jeu sauvegardÃ© !");
  		 } catch (IOException e) {
-			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
+			 System.err.println("Une erreur d'Ã©criture, le jeu n'a pas pu sauvegardÃ© correctement");
  		 } finally {
  		    try {	
  		       if (oos != null)	
  		          oos.close();	
  		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
  		       //e.printStackTrace();
  		    }
  		 }
