@@ -17,7 +17,7 @@ public class Pnj extends Joueur {
 		if(a < 0.5) {
 			this.inventaire.add(new Objet(S));
 		}
-		this.AddStrength();
+		if(!this.inventaire.isEmpty()) this.AddStrength();
 	}
 	
 	public void AddStrength() {
