@@ -42,14 +42,14 @@ public class Etage {
 		x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 		y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
 		graphe[x][y] = 1;
-		// On parcourt tout le graphe
-		int nb_som_visit = 0;
-		while(nb_som_visit<Variables.Nb_hauteur_salles*Variables.Nb_largeur_salles){
+		// On parcourt tous les sommets au moins une fois
+		boolean stop = false;
+		while(stop == false){
 			// On choisit un sommet marque au hasard
-			do{
+			while(graphe[x][y] != 1){
 				x = ThreadLocalRandom.current().nextInt(0,Variables.Nb_largeur_salles);
 				y = ThreadLocalRandom.current().nextInt(0,Variables.Nb_hauteur_salles);
-			}while(graphe[x][y] != 1);
+			}
 			// On verifie si au moins un voisin est non marque
 			boolean test = false;
 			for(int k=0;k<4;k++){
@@ -117,7 +117,13 @@ public class Etage {
 						break;
 				}
 			}
-			nb_som_visit++;
+			int som_visit = 0;
+			for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+				for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+					if(graphe[i][j] != 0) som_visit++;
+				}
+			}
+			if(som_visit == Variables.Nb_largeur_salles*Variables.Nb_hauteur_salles) stop = true;
 		}
 		return this;
 	}
