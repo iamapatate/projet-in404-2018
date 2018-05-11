@@ -37,7 +37,7 @@ public enum Application {
     	Donjon donjon = new Donjon();       	
         Commande com = new Commande();
         int test = -1;    	
-    	System.out.println("Load Game? y/n");
+    	System.out.println("Lcharger une partie? y/n");
     	while(test == -1) {
     		test = com.analyseCommandeFichier("loadgame");
     	}
