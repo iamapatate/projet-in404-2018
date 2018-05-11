@@ -17,6 +17,19 @@ public class Pnj extends Joueur {
 		if(a < 0.5) {
 			this.inventaire.add(new Objet(S));
 		}
+		this.AddStrength();
+	}
+	
+	public void AddStrength() {
+		if (this.inventaire.get(0).getType().equals("pistol")) {
+			this.puissance += 30;
+		}
+		else if(this.inventaire.get(0).getType().equals("lime")) {
+			this.puissance += 5;
+		}
+		else if(this.inventaire.get(0).getType().equals("surin")) {
+			this.puissance += 15;
+		}
 	}
 	
 	public Pnj MoveAleat(Salle S) {

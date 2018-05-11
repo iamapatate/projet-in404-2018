@@ -48,7 +48,7 @@ public enum Application {
         // charger une sauvegarde
         donjon = com.charger();
         }
-        for(int i = 0; i < Variables.Nb_etages; i++) {
+/*        for(int i = 0; i < Variables.Nb_etages; i++) {
     		for(int j = 0; j < Variables.Nb_largeur_salles; j++) {
     			for(int k = 0; k < Variables.Nb_hauteur_salles; k++) {
     				System.out.println(i);
@@ -58,11 +58,7 @@ public enum Application {
     			}
     		}
     	}
-		System.out.println("Votre objectif est de trouver la clé de chaque étage \nafin de remonter le donjon par des trappes, bonne chance!");       
-    	System.out.println("Voici la liste des commandes mise à votre disposition: ");
-    	System.out.println("(move/turn) + (up/down/left/right)");
-    	System.out.println("take, see, open, inventory, sauvegarder");
-    	
+*/        
     	donjon.PlayTheGame(com);
     	
 }

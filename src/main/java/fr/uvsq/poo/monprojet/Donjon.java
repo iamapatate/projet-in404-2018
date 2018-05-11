@@ -67,9 +67,10 @@ public class Donjon implements Serializable{
     			}
     		}
     		else {
-    			System.out.println("C'est la mort qui t'a assassinée marcia, c'est la mort qui t'a emmeneEEEEeeEEEeeeEEE");
+    			System.out.println("Vous avez failli");
     			break;
     		}
         }
+        System.out.println("C'est gagné! Vous êtes sortis de la prison sain et sauf!");
 	}
 }

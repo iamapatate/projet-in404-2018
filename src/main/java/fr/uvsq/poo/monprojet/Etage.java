@@ -18,11 +18,7 @@ public class Etage {
 			}
 		}
 		
-		public void SetGrille(int x, int y, Salle Sa) {
-		this.grille[x][y] = Sa;
-		}
-
-		public Salle GetSalle(int x,int y) {
+		public Salle getGrille(int x, int y) {
 			return this.grille[x][y];
 		}
 		
@@ -155,6 +151,14 @@ public class Etage {
 			return this;
 
 		}
+		
+	public void SetGrille(int x, int y, Salle Sa) {
+		this.grille[x][y] = Sa;
+	}
+
+	public Salle GetSalle(int x,int y) {
+		return this.grille[x][y];
+	}
 	
 	public Salle ChangeRoom(int Cardinal, int salleX, int salleY) {
 		if(Cardinal == 0) {
