@@ -27,7 +27,7 @@ public enum Application {
         int test = -1; int ChangingPlaces = 0;
         int salleX = 0; int salleY = 0; int NumEtage = 0;
     	
-    	System.out.println("Load Game? y/n");
+    	System.out.println("charger une partie? y/n");
     	while(test == -1) {
     		test = com.analyseCommandeFichier("loadgame");
     	}
