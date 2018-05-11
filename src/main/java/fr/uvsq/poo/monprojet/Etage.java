@@ -151,6 +151,10 @@ public class Etage {
 			return this;
 
 		}
+		
+	public void SetGrille(int x, int y, Salle Sa) {
+		this.grille[x][y] = Sa;
+	}
 
 	public Salle GetSalle(int x,int y) {
 		return this.grille[x][y];

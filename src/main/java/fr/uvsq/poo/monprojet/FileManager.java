@@ -30,49 +30,61 @@ public abstract class FileManager {
 	}
 	
 	public Donjon LoadGame(String nameoffile) {
-		Donjon D = new Donjon();
-		// lire fichier
-		try {
-			ois = new ObjectInputStream(
-		              new BufferedInputStream(
-		                new FileInputStream(
-		                  new File(nameoffile))));
-		      D=((Donjon)ois.readObject());
+ 		Donjon D = new Donjon();
+ 		// lire fichier
+ 		try {
+ 			ois = new ObjectInputStream(
+ 		              new BufferedInputStream(
+ 		                new FileInputStream(
+ 		                  new File(nameoffile))));
+			for(int k = 0; k < Variables.Nb_etages; k++) {
+		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+		  				D.getNiveau(k).SetGrille(i,j,((Salle)ois.readObject()));
+		  			}
+		    	  }
+		      }
 	    System.out.println("jeu chargé avec succès !");
-		 } catch (IOException e) {
+ 		 } catch (IOException e) {
 			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
-		 } catch (ClassNotFoundException e) {
+ 		 } catch (ClassNotFoundException e) {
 			 System.err.println("Classe Donjon non trouvé");
-		 } finally {
-		    try {	
-		       if (ois != null)	
-		          ois.close();	
-		    } catch (IOException e) {
+ 		 } finally {
+ 		    try {	
+ 		       if (ois != null)	
+ 		          ois.close();	
+ 		    } catch (IOException e) {
 		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
-		       //e.printStackTrace();
-		    }
-		 }
-		return D;
-	}
-	
-	public void SaveGame(String nameoffile, Donjon D){
-		try {
-		      oos = new ObjectOutputStream(
-		              new BufferedOutputStream(
-		                new FileOutputStream(
-		                  new File(nameoffile))));
-		      oos.writeObject(D);
-	    System.out.println("jeu sauvegardé !");
-		 } catch (IOException e) {
+ 		       //e.printStackTrace();
+ 		    }
+ 		 }
+ 		return D;
+ 	}
+ 	
+ 	public void SaveGame(String nameoffile, Donjon D){
+ 		try {
+ 		      oos = new ObjectOutputStream(
+ 		              new BufferedOutputStream(
+ 		                new FileOutputStream(
+ 		                  new File(nameoffile))));
+		      for(int k = 0; k < Variables.Nb_etages; k++) {
+		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+		  					oos.writeObject(D.getNiveau(k).GetSalle(i,j));
+		  			}
+		    	  }
+		      }
+		      System.out.println("jeu sauvegardé !");
+ 		 } catch (IOException e) {
 			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
-		 } finally {
-		    try {	
-		       if (oos != null)	
-		          oos.close();	
-		    } catch (IOException e) {
+ 		 } finally {
+ 		    try {	
+ 		       if (oos != null)	
+ 		          oos.close();	
+ 		    } catch (IOException e) {
 		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
-		       //e.printStackTrace();
-		    }
-		 }
+ 		       //e.printStackTrace();
+ 		    }
+ 		 }
 	}
 }
