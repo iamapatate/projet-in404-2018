@@ -5,11 +5,36 @@ public class Donjon implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Etage niveaux[] = new Etage[Variables.Nb_etages];
+	private int salleX;
+	private int salleY;
+	private int NumEtage;
+	
+	public int GetSallex() {
+		return this.salleX;
+	}
+	public int GetSalley() {
+		return this.salleY;
+	}
+	public int GetNumEtage() {
+		return this.NumEtage;
+	}
+	public void SetSallex(int x) {
+		this.salleX = x;
+	}
+	public void SetSalley(int y) {
+		this.salleY = y;
+	}
+	public void SetNumEtage(int k) {
+		this.NumEtage = k;
+	}
 	
 	public Donjon() {
 		for(int i=0;i<Variables.Nb_etages;i++) {
 			this.niveaux[i] = new Etage();
 		}
+		this.salleX=0;
+		this.salleY=0;
+		this.NumEtage=0;
 	}
 	public Etage getNiveau(int numero){
 		return this.niveaux[numero];
@@ -32,38 +57,37 @@ public class Donjon implements Serializable{
 	
 	public void PlayTheGame(Commande com) {
 		int ChangingPlaces = 0; Pj change = new Pj(new Salle());
-        int salleX = 0; int salleY = 0; int NumEtage = 0;
-		getNiveau(NumEtage).GetSalle(salleX, salleY).affSalle();    	
-        while(ChangingPlaces != 4 && NumEtage != Variables.Nb_etages) {
-    		System.out.println("Vous êtes en Salle " + salleX + " " + salleY + " à l'étage: " + NumEtage);
-    		if(getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur().getVie() != 0) {
-    			ChangingPlaces = com.analyseCommandeJoueur(getNiveau(NumEtage).GetSalle(salleX,salleY), this);	
+		getNiveau(this.NumEtage).GetSalle(this.salleX, this.salleY).affSalle();    	
+        while(ChangingPlaces != 4 && this.NumEtage != Variables.Nb_etages) {
+    		System.out.println("Vous Ãªtes en Salle " + this.salleX + " " + salleY + " Ã  l'Ã©tage: " + this.NumEtage);
+    		if(getNiveau(this.NumEtage).GetSalle(this.salleX, this.salleY).getJoueur().getVie() != 0) {
+    			ChangingPlaces = com.analyseCommandeJoueur(getNiveau(this.NumEtage).GetSalle(this.salleX,this.salleY), this);	
     			if(ChangingPlaces != -1) {
-    				change = getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur();
+    				change = getNiveau(this.NumEtage).GetSalle(this.salleX, this.salleY).getJoueur();
     				if(ChangingPlaces == 0) {// haut
-    					salleY++;
+    					this.salleY++;
     					change.EntreSud();
     				}
     				else if(ChangingPlaces == 1) {// droite
-    					salleX++;
+    					this.salleX++;
     					change.EntreEst();
     				}
     				else if(ChangingPlaces == 2) {// bas
-    					salleY--;
+    					this.salleY--;
     					change.EntreNord();
     				}
     				else if(ChangingPlaces == 3) {// gauche
-    					salleX--;
+    					this.salleX--;
     					change.EntreOuest();
     				}
     				else if(ChangingPlaces == 4) {
     					change.removeCle();
-    					NumEtage++;
-    					salleX = 0;
-    					salleY = 0;
+    					this.NumEtage++;
+    					this.salleX = 0;
+    					this.salleY = 0;
     				}
-    				getNiveau(NumEtage).GetSalle(salleX, salleY).getInRoom(change);
-    				getNiveau(NumEtage).GetSalle(salleX, salleY).Update();
+    				getNiveau(this.NumEtage).GetSalle(this.salleX, this.salleY).getInRoom(change);
+    				getNiveau(this.NumEtage).GetSalle(this.salleX, this.salleY).Update();
     			}
     		}
     		else {
@@ -71,6 +95,6 @@ public class Donjon implements Serializable{
     			break;
     		}
         }
-        if(change.getVie()!= 0)System.out.println("C'est gagné! Vous êtes sortis de la prison sain et sauf!");
+        if(change.getVie()!= 0)System.out.println("C'est gagnÃ©! Vous Ãªtes sortis de la prison sain et sauf!");
 	}
 }
