@@ -14,6 +14,10 @@ public class Pj extends Joueur {
 		this.type = "PJ";
 	}
 	
+	public int getVie() {
+		return this.vie;
+	}
+	
 	public Joueur Turn(String dir) {
 		this.dir = dir;
 		return this;
@@ -37,7 +41,7 @@ public class Pj extends Joueur {
 	}
 	
 	public void CheckStatsAndInventory() {
-		System.out.println("vie: " + this.vie + ", puissance: " + this.puissance + ", Nombre d'objets: " + this.inventaire.size() + "\n");
+		System.out.println("vie " + this.vie + " puissance " + this.puissance + " Nbobjets " + this.inventaire.size() + "\n");
 		for(int i = 0; i < inventaire.size(); i++) {
 			System.out.print(this.inventaire.get(i).getType() + " ");
 		}

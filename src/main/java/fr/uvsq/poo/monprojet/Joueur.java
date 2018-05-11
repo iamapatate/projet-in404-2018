@@ -36,6 +36,30 @@ public abstract class Joueur extends DansLaMap implements Serializable{
 		return this;
 	}
 	
+	public void modifCoord(int x, int y) {
+		this.x = x; this.y = y;
+	}
+	
+	public void EntreSud() {
+		this.x = Variables.largeur_salle/2;
+		this.y = 1;
+	}
+	
+	public void EntreNord() {
+		this.x = Variables.largeur_salle/2;
+		this.y = Variables.hauteur_salle - 2;		
+	}
+	
+	public void EntreEst() {
+		this.x = 1;
+		this.y = Variables.hauteur_salle/2;
+	}
+	
+	public void EntreOuest() {
+		this.x = Variables.largeur_salle - 2;
+		this.y = Variables.hauteur_salle/2;		
+	}
+	
 	public int getAttack() {
 		return this.puissance;
 	}

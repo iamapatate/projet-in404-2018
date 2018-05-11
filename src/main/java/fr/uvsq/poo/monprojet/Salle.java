@@ -125,7 +125,7 @@ public class Salle implements Serializable{
 		}
 	}
 
-	public Salle Update() {
+	public void Update() {
 		// tous les pnjs recherchent le joueur
 		for(int i = 0; i < this.pnjs.size(); i++) {
 			this.PnjLookingForFight(this.pnjs.get(i));
@@ -154,15 +154,14 @@ public class Salle implements Serializable{
 		}
 		
 		// afficher les nouveaux pjs et pnjs
-		this.grille_string[this.joueur.getPosX()][this.joueur.getPosY()] = "PJ";
+		if(this.joueur.getVie() != 0){
+			this.grille_string[this.joueur.getPosX()][this.joueur.getPosY()] = "PJ";
+		}
 		for(int i = 0; i < pnjs.size(); i++) {
 			this.grille_string[this.pnjs.get(i).getPosX()][this.pnjs.get(i).getPosY()] = this.pnjs.get(i).getString();
 		}
-		this.affSalle();
-		return this;
-	}
-
-	
+		affSalle();
+	}	
 
 	/*
 	 *  Renvoie un String symbolisant ce qui se trouve en face du joueur j
@@ -280,7 +279,7 @@ public class Salle implements Serializable{
 	}
 	
 	// retourne l'int correspondant au cardinal vers lequel le joueur tente d'ouvrir une porte
-	public int ChangeRoom() {
+	public int GetOutOfRoom() {
 		if(ADroiteJoueur(this.joueur).equals("porte")) {
 			System.out.println("Changement de salle");
 			return 1;
@@ -301,8 +300,12 @@ public class Salle implements Serializable{
 				|| DevantJoueur(this.joueur).equals("trappe") || DerriereJoueur(this.joueur).equals("trappe")) {
 			System.out.println("Changement d'étage");
 			return 4;
-		}
-		
+		}	
 		return -1;
+	}
+	
+	public Salle getInRoom(Pj J) {
+		this.joueur = J;
+		return this;
 	}
 }
