@@ -49,7 +49,7 @@ public abstract class FileManager {
 		 } catch (IOException e) {
 			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
 		 } catch (ClassNotFoundException e) {
-			 System.err.println("problème rencontrer dans l'écriture de la classe salle");
+			 System.err.println("problème rencontré dans l'écriture de la classe salle");
 		 } finally {
 		    try {	
 		       if (ois != null)	
