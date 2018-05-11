@@ -75,7 +75,6 @@ public abstract class FileManager {
 		      }
 		      System.out.println("jeu sauvegardé !");
 		 } catch (IOException e) {
-			 e.printStackTrace();
 			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
 		 } finally {
 		    try {	
