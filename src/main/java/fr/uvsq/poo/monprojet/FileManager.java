@@ -1,5 +1,4 @@
 package fr.uvsq.poo.monprojet;
-
 import java.io.*;
 
 public abstract class FileManager {
@@ -37,18 +36,24 @@ public abstract class FileManager {
 		              new BufferedInputStream(
 		                new FileInputStream(
 		                  new File(nameoffile))));
-		      D=((Donjon)ois.readObject());
-	    System.out.println("jeu chargé avec succès !");
+			for(int k = 0; k < Variables.Nb_etages; k++) {
+		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+		  				D.getNiveau(k).setGrille(i,j,((Salle)ois.readObject()));
+		  			}
+		    	  }
+		      }
+	    System.out.println("jeu chargÃ© avec succÃ¨s !");
 		 } catch (IOException e) {
-			 System.err.println("Une erreur de lecture, le jeu n'a pas pu être chargé correctement");
+			 System.err.println("Une erreur de lecture, le jeu n'a pas pu Ãªtre chargÃ© correctement");
 		 } catch (ClassNotFoundException e) {
-			 System.err.println("Classe Donjon non trouvé");
+			 System.err.println("Classe Donjon non trouvÃ©");
 		 } finally {
 		    try {	
 		       if (ois != null)	
 		          ois.close();	
 		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
 		       //e.printStackTrace();
 		    }
 		 }
@@ -61,16 +66,23 @@ public abstract class FileManager {
 		              new BufferedOutputStream(
 		                new FileOutputStream(
 		                  new File(nameoffile))));
-		      oos.writeObject(D);
-	    System.out.println("jeu sauvegardé !");
+		      for(int k = 0; k < Variables.Nb_etages; k++) {
+		    	  for(int i=0;i<Variables.Nb_largeur_salles;i++) {
+		  			for(int j=0;j<Variables.Nb_hauteur_salles;j++) {
+		  					oos.writeObject(D.getNiveau(k).getGrille(i,j));
+		  			}
+		    	  }
+		      }
+		      System.out.println("jeu sauvegardÃ© !");
 		 } catch (IOException e) {
-			 System.err.println("Une erreur d'écriture, le jeu n'a pas pu sauvegardé correctement");
+			 e.printStackTrace();
+			 System.err.println("Une erreur d'Ã©criture, le jeu n'a pas pu sauvegardÃ© correctement");
 		 } finally {
 		    try {	
 		       if (oos != null)	
 		          oos.close();	
 		    } catch (IOException e) {
-		    	System.err.println("Le fichier de sauvegarde n'a pas pu être fermé correctement");
+		    	System.err.println("Le fichier de sauvegarde n'a pas pu Ãªtre fermÃ© correctement");
 		       //e.printStackTrace();
 		    }
 		 }

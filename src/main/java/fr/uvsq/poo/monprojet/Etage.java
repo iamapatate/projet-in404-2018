@@ -1,4 +1,5 @@
 package fr.uvsq.poo.monprojet;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Etage {
@@ -22,6 +23,10 @@ public class Etage {
 	public Salle getGrille(int x, int y) {
 		return this.grille[x][y];
 	}
+	public void setGrille(int x, int y, Salle Sa)
+	  {
+		this.grille[x][y] = Sa;
+	  }
 	
 	public Etage initialisation() {
 		//On bloque les portes qui donnent vers l'exterieur
@@ -142,6 +147,7 @@ public class Etage {
 	public Salle GetSalle(int x,int y) {
 		return this.grille[x][y];
 	}
+	
 	
 	public Salle ChangeRoom(int Cardinal, int salleX, int salleY) {
 		if(Cardinal == 0) {

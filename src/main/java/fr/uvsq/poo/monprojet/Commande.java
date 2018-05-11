@@ -12,7 +12,7 @@ public class Commande extends FileManager{
 	
 	/*
 	 *  Retourne un tableau de mots qui composent la commande
-	 *  d'entrée du joueur, si la commande est "move up", split[0] = move, split[1] = up.
+	 *  d'entrÃ©e du joueur, si la commande est "move up", split[0] = move, split[1] = up.
 	 */
 	public String[] getAction() {
 		this.action = this.sc.nextLine();
@@ -56,7 +56,7 @@ public class Commande extends FileManager{
 		String[] action;
 		action = getAction();
 		String ac;
-		int updateroom = -1; // permet de dire à Application quand changer de salle
+		int updateroom = -1; // permet de dire Ã  Application quand changer de salle
 
 		if(action[0].equals("move")) {
 			S.getJoueur().Move(S,action[1]);
