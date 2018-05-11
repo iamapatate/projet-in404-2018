@@ -107,10 +107,9 @@ public class Salle implements Serializable{
 	}
 
 	public void affSalle() {
-		int a= 9619;
 		for(int j = Variables.hauteur_salle-1; j >= 0; j--) {
 			for(int i = 0; i < Variables.largeur_salle; i++) {
-				if(this.grille_string[i][j].equals("mur")) System.out.print((char)a);
+				if(this.grille_string[i][j].equals("mur")) System.out.print("#");
 				else if(this.grille_string[i][j].equals("sol")) System.out.print(".");
 				else if(this.grille_string[i][j].equals("PJ")) System.out.print("+");
 				else if(this.grille_string[i][j].equals("porte")) System.out.print("O");
