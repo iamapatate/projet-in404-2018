@@ -36,6 +36,7 @@ public class Pj extends Joueur {
 				this.puissance += 30;
 			}
 			if(Obj.getType().equals("vie")) {
+				this.inventaire.remove(this.inventaire.indexOf(Obj));
 				this.vie += 1;
 			}
 		}
@@ -44,7 +45,7 @@ public class Pj extends Joueur {
 	}
 	
 	public void CheckStatsAndInventory() {
-		System.out.println("vie: " + this.vie + ", puissance: " + this.puissance + ", Nombre d'objets: " + this.inventaire.size() + "\n");
+		System.out.println("vie " + this.vie + " puissance " + this.puissance + " Nbobjets " + this.inventaire.size() + "\n");
 		for(int i = 0; i < inventaire.size(); i++) {
 			System.out.print(this.inventaire.get(i).getType() + " ");
 		}
@@ -54,6 +55,23 @@ public class Pj extends Joueur {
 	public Joueur LoseLife() {
 		this.vie -= 1;
 		return this;
+	}
+	
+	public void removeCle() {
+		for(int i = 0; i < inventaire.size(); i++) {
+			if (inventaire.get(i).getType().equals("cle")){
+				this.inventaire.remove(i);
+			}
+		}
+	}
+	
+	public int hasKey() {
+		for(int i = 0; i < inventaire.size(); i++) {
+			if (inventaire.get(i).getType().equals("cle")){
+				return 1;
+			}
+		}
+		return 0;
 	}
 	
 }

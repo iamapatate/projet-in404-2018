@@ -297,8 +297,8 @@ public class Salle implements Serializable{
 			System.out.println("Changement de salle");
 			return 3;
 		}
-		else if(ADroiteJoueur(this.joueur).equals("trappe") || AGaucheJoueur(this.joueur).equals("trappe")
-				|| DevantJoueur(this.joueur).equals("trappe") || DerriereJoueur(this.joueur).equals("trappe")) {
+		else if((ADroiteJoueur(this.joueur).equals("trappe") || AGaucheJoueur(this.joueur).equals("trappe")
+				|| DevantJoueur(this.joueur).equals("trappe") || DerriereJoueur(this.joueur).equals("trappe")) && this.joueur.hasKey() == 1) {
 			System.out.println("Changement d'étage");
 			return 4;
 		}	

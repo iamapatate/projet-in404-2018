@@ -80,7 +80,7 @@ public class Commande extends FileManager{
 		else if(action[0].equals("inventory")) {
 			S.getJoueur().CheckStatsAndInventory();
 		}
-		else if(action[0].equals("sauvegarder")) {
+		else if(action[0].equals("save")) {
 			String nameoffile;
 			System.out.println("Quel nom donner au fichier de sauvegarde? (il doit se terminer par .txt)");
 			nameoffile = this.sc.nextLine();

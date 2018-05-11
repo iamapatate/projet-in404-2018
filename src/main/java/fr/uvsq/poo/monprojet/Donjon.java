@@ -57,6 +57,7 @@ public class Donjon implements Serializable{
     					change.EntreOuest();
     				}
     				else if(ChangingPlaces == 4) {
+    					change.removeCle();
     					NumEtage++;
     					salleX = 0;
     					salleY = 0;
