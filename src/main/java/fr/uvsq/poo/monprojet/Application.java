@@ -36,9 +36,7 @@ public enum Application {
     	
     	Donjon donjon = new Donjon();       	
         Commande com = new Commande();
-        int test = -1; int ChangingPlaces = 0;
-        int salleX = 0; int salleY = 0; int NumEtage = 0;
-    	
+        int test = -1;    	
     	System.out.println("Load Game? y/n");
     	while(test == -1) {
     		test = com.analyseCommandeFichier("loadgame");
@@ -54,41 +52,8 @@ public enum Application {
     	System.out.println("Voici la liste des commandes mise à votre disposition: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
     	System.out.println("pick, see, open, inventory, sauvegarder");
-		donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).affSalle();    	
-    	while(ChangingPlaces != 4 && NumEtage != Variables.Nb_etages) {
-    		System.out.println("Vous êtes en Salle " + salleX + " " + salleY + " à l'étage: " + NumEtage);
-    		if(donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur().getVie() != 0) {
-    			ChangingPlaces = com.analyseCommandeJoueur(donjon.getNiveau(NumEtage).GetSalle(salleX,salleY), donjon);	
-    			if(ChangingPlaces != -1) {
-    				Pj change = donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).getJoueur();
-    				if(ChangingPlaces == 0) {// haut
-    					salleY++;
-    					change.EntreSud();
-    				}
-    				else if(ChangingPlaces == 1) {// droite
-    					salleX++;
-    					change.EntreEst();
-    				}
-    				else if(ChangingPlaces == 2) {// bas
-    					salleY--;
-    					change.EntreNord();
-    				}
-    				else if(ChangingPlaces == 3) {// gauche
-    					salleX--;
-    					change.EntreOuest();
-    				}
-    				else if(ChangingPlaces == 4) {
-    					NumEtage++;
-    					salleX = 0;
-    					salleY = 0;
-    				}
-    				donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).getInRoom(change);
-    				donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).Update();
-    			}
-    		}
-    		else System.out.println("c'est la mort qui t'a assassinée marzia");
-    	}
     	
+    	donjon.PlayTheGame(com);
     	
     	/*
     	for(int i = 0; i < Variables.Nb_etages; i++) {
@@ -100,8 +65,7 @@ public enum Application {
     	    		donjon.getNiveau(i).getGrille(j,k).affSalle();
     			}
     		}
-    	}
-    	*/
+    	}*/
 }
 
     /**
