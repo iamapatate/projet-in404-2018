@@ -41,7 +41,7 @@ public enum Application {
 		System.out.println("Votre objectif est de trouver la clé de chaque étage \nafin de remonter le donjon par des trappes, bonne chance!");       
     	System.out.println("Voici la liste des commandes mise à votre disposition: ");
     	System.out.println("(move/turn) + (up/down/left/right)");
-    	System.out.println("pick, see, open, inventory, sauvegarder");
+    	System.out.println("take, see, open, inventory, sauvegarder");
 		donjon.getNiveau(NumEtage).GetSalle(salleX, salleY).affSalle();    	
     	while(ChangingPlaces != 4 && NumEtage != Variables.Nb_etages) {
     		System.out.println("Vous êtes en Salle " + salleX + " " + salleY + " à l'étage: " + NumEtage);
