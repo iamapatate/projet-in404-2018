@@ -35,6 +35,9 @@ public class Pj extends Joueur {
 			if(Obj.getType().equals("pistol")) {
 				this.puissance += 30;
 			}
+			if(Obj.getType().equals("vie")) {
+				this.vie += 1;
+			}
 		}
 		else System.out.println("Qu'allez vous faire avec deux " + Obj.getType() + "s" + " ?");
 		return this.inventaire; 

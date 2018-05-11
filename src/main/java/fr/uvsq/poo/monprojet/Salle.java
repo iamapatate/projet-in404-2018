@@ -120,6 +120,7 @@ public class Salle implements Serializable{
 				else if(this.grille_string[i][j].equals("surin")) System.out.print("S");
 				else if(this.grille_string[i][j].equals("pistol")) System.out.print("P");
 				else if(this.grille_string[i][j].equals("PNJ")) System.out.print("@");
+				else if(this.grille_string[i][j].equals("vie")) System.out.print("V");
 			}
 			System.out.println("");
 		}

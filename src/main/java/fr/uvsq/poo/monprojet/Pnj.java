@@ -46,7 +46,7 @@ public class Pnj extends Joueur {
 				S.getString(this.getPosX(), this.getPosY() + 1).equals("PJ") || 
 				S.getString(this.getPosX() - 1, this.getPosY()).equals("PJ") ||
 				S.getString(this.getPosX(), this.getPosY() - 1).equals("PJ")|| 
-				S.getString(this.getPosX() , this.getPosY()).equals("PJ")) {
+				(S.getJoueur().getPosX() == this.getPosX() && S.getJoueur().getPosY() == this.getPosY())) {
 			if(this.getAttack() > S.getJoueur().getAttack()) {
 				return "gagné";
 			}

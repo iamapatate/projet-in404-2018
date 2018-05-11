@@ -19,9 +19,10 @@ public class Objet extends DansLaMap{
 		else if(a < 0.4) {
 			this.type = "surin";
 		}
-		else {
+		else if(a > 0.4 && a < 0.85) {
 			this.type = "lime";
 		}
+		else this.type = "vie";
 	}
 	
 	public Objet(Salle S, int posX, int posY, String type) {
